@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.interfaces.ICategoriaService;
 import com.example.demo.interfaces.IUsuarioService;
 import com.example.demo.model.Usuario;
 
@@ -15,6 +16,9 @@ import com.example.demo.model.Usuario;
 public class Controlador {
 	@Autowired
 	private IUsuarioService us;
+	
+	@Autowired
+	private ICategoriaService categoriaService;
 	
 	@RequestMapping("/")
 	public ModelAndView inicio(HttpServletRequest req) {
@@ -65,6 +69,14 @@ public class Controlador {
 		session.setAttribute("usuario", aux);
 		
 		return inicio(req);
+	}
+	
+	@RequestMapping("/categorias")
+	public String categorias (HttpServletRequest req) {
+		System.out.println("entra en categorias");
+		req.setAttribute("listarCategorias", categoriaService.listarCategorias());
+		
+		return "categorias";
 	}
 	
 	

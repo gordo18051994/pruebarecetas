@@ -13,7 +13,7 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="/">Inicio</a></li>
-          <li><a href="">Categorias</a></li>
+          <li><a href="/categorias">Categorias</a></li>
           <li><a href="/login">Login</a></li>
           
            <li class="menu-has-children"><a href="">nombreUsuario</a>
