@@ -7,6 +7,15 @@ body {
 background-image: url("../images/background2.jpg");
 margin-top: 8%;
 }
+.categoria {
+	text-decoration: none;
+	color:red;
+}	
+a:hover {
+	font-size: 150%;
+	text-decoration: none;
+	color:red;
+}
 
 .card {
     border-radius:0;

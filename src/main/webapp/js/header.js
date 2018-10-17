@@ -1,4 +1,5 @@
 // Mobile Navigation
+var init = function() {
   if ($('#nav-menu-container').length) {
     var $mobile_nav = $('#nav-menu-container').clone().prop({
       id: 'mobile-nav'
@@ -71,3 +72,6 @@
       }
     }
   });
+}
+
+$().ready(init);

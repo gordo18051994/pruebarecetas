@@ -10,7 +10,10 @@
 }
 
 #nav-menu-container {
-	margin-top: -15px !important;
+	margin-top: -30px !important;
+}
+.nav-menu > li > a{
+	 font-size: 25px;
 }
 #header > .container > .pull-left {
 	margin-left: -200px;
@@ -220,4 +223,5 @@ body.mobile-nav-active #mobile-nav {
 #mobile-nav-toggle {
     display: inline;
 }
-}
+
+
