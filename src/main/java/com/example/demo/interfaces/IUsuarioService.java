@@ -4,7 +4,7 @@ import com.example.demo.model.Usuario;
 
 public interface IUsuarioService {
 	
-	public Usuario loginUsuario(int id);
-	public Usuario addUsuario(Usuario usuario);
+	public Usuario loginUsuario(Usuario u);
+	public Usuario addUsuario(Usuario u);
 
 }

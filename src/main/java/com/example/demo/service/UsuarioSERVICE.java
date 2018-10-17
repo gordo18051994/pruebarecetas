@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,18 @@ public class UsuarioSERVICE implements IUsuarioService {
 	private IUsuarioRepository usuarioRepository;
 	
 	@Override
-	public Usuario loginUsuario(int id) {
+	public Usuario loginUsuario(Usuario u) {
 		Usuario aux = new Usuario();
-		Optional<Usuario> u = usuarioRepository.findById(id);
-		if (u.isPresent()) {
-			aux = u.get();
-		}else {
-			aux = null;
+		List<Usuario> usuarios = (List<Usuario>)usuarioRepository.findAll();
+		for (Usuario usuario : usuarios) {
+			if(usuario.getEmail().equals(u.getEmail())) {
+				aux = usuario;
+				break;
+			} else {
+				aux = null;
+			}
 		}
+		
 		return aux;
 	}
 

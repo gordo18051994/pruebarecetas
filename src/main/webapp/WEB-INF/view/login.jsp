@@ -12,7 +12,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign In</h5>
-            <form class="form-signin" method="POST" action="/acceso">
+            <form class="form-signin" method="POST" action="/logear">
               <div class="form-label-group">
                 <input type="email" id="emailLogin" class="form-control" name="email" placeholder="Email address" required autofocus>
                 <label for="emailLogin">Correo electronico</label>
