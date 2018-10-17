@@ -20,7 +20,7 @@
 									AQUI EL TITULO</p>
 							</div>
 							<div class="col-md-5 col-xs-6">
-								<img src="hello.jpg"
+								<img src=""
 									style="background-color: orange; height: 75px; width: 130px; margin-top: 20px;">
 							</div>
 							<div class="col-md-7">

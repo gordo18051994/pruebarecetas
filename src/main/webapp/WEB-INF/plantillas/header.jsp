@@ -4,10 +4,10 @@
 <header id="header">
     <div class="container">
 
-      <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">Recetas de la abuela</a></h1>
+      <div  class="pull-left">
+       <!-- <h1><a href="#intro" class="scrollto">Recetas de la abuela</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+        <img id="logo" src="images/logoAnuntiate.png" alt="" title="" />
       </div>
 
       <nav id="nav-menu-container">
