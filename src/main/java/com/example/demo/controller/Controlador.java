@@ -65,18 +65,26 @@ public class Controlador {
 		u.setEmail(email);
 		u.setPassword(password);
 		 Usuario aux = us.loginUsuario(u);
-		 System.out.println(aux.getUsuario());
 		session.setAttribute("usuario", aux);
 		
 		return inicio(req);
 	}
 	
+
 	@RequestMapping("/categorias")
 	public String categorias (HttpServletRequest req) {
 		System.out.println("entra en categorias");
 		req.setAttribute("listarCategorias", categoriaService.listarCategorias());
 		
 		return "categorias";
+	}
+	@RequestMapping("/cerrarSesion")
+	public ModelAndView cerrarSesion(HttpServletRequest req) {
+		HttpSession session = req.getSession(true);
+		ModelAndView m = new ModelAndView();
+		session.invalidate();
+		return inicio(req);
+
 	}
 	
 	

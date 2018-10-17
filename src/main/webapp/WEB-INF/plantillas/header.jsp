@@ -1,6 +1,7 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
+<%@page import="com.example.demo.model.Usuario"%>
 <header id="header">
     <div class="container">
 
@@ -15,15 +16,18 @@
           <li class="menu-active"><a href="/">Inicio</a></li>
           <li><a href="/categorias">Categorias</a></li>
           <li><a href="/login">Login</a></li>
-          
-           <li class="menu-has-children"><a href="">nombreUsuario</a>
+          <% Usuario u = (Usuario) session.getAttribute("usuario");
+          	if(u != null) {
+          %>
+           <li class="menu-has-children"><a href=""><%=u.getUsuario() %></a>
             <ul>
               <li><a href="#">Mis recetas</a></li>
               <li><a href="#">Perfil</a></li>
               <li><a href="#">Subir anuncios</a></li>
-              <li><a href="#">Cerrar sesion</a></li>
+              <li><a href="/cerrarSesion">Cerrar sesion</a></li>
             </ul>
           </li>
+          <%} %>
           <!-- <li><a href="">Contact</a></li> -->
         </ul>
       </nav><!-- #nav-menu-container -->
