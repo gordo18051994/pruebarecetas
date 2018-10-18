@@ -39,5 +39,6 @@
 
 </div>
 </div>
+	<%@ include file="../plantillas/footer.jsp"%>
 </body>
 </html>

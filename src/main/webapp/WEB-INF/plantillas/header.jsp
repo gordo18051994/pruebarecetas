@@ -22,7 +22,7 @@
            <li class="menu-has-children"><a href=""><%=u.getUsuario() %></a>
             <ul>
               <li><a href="#">Mis recetas</a></li>
-              <li><a href="#">Perfil</a></li>
+              <li><a href="/perfil">Perfil</a></li>
               <li><a href="#">Subir anuncios</a></li>
               <li><a href="/cerrarSesion">Cerrar sesion</a></li>
             </ul>

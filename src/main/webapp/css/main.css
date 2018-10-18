@@ -6,6 +6,8 @@
 body {
 background-image: url("../images/background2.jpg");
 margin-top: 8%;
+margin-bottom: 0;
+height: auto;
 }
 .categoria {
 	text-decoration: none;

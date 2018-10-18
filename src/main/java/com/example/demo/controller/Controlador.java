@@ -128,6 +128,11 @@ public class Controlador {
 
 	}
 	
+	@RequestMapping("/perfil")
+	public String perfil(HttpServletRequest req) {
+		return "perfil";
+	}
+	
 	
 	
 	

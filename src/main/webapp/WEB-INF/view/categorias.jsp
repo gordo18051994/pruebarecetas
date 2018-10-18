@@ -7,7 +7,8 @@
 
 <body>
 <%@ include file="../plantillas/header.jsp"%>
-	<section class="container" style="max-width: 25%; float: left;">
+<div class="container-fluid">
+	<section class="container" style="max-width: 25%; margin-left: 0px;">
 		<ul style="list-style: none;">
 
 			<c:forEach var="c" items="${listarCategorias}">
@@ -16,6 +17,6 @@
 			</c:forEach>
 		</ul>
 	</section>
-
-
+</div>
+	<%@ include file="../plantillas/footer.jsp"%>
 </body>
