@@ -6,7 +6,7 @@
 
 <body>
 	<%@ include file="../plantillas/header.jsp"%>
-<div class="container" style="max-height: 450px;">
+<div class="container" style="height: 450px;">
 <div id="demo" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->
@@ -36,6 +36,12 @@
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
+
+</div>
+</div>
+
+<div class="container">
+	<div class="row" id="categorias">
 
 </div>
 </div>
