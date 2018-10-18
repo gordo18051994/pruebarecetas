@@ -6,7 +6,7 @@
 
 <body>
 	<%@ include file="../plantillas/header.jsp"%>
-<div class="container" style="max-height: 450px;">
+<div class="container" style="height: 450px;">
 <div id="demo" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->

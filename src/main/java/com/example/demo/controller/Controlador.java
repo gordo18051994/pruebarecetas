@@ -8,11 +8,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.interfaces.ICategoriaService;
 import com.example.demo.interfaces.IRecetaService;
 import com.example.demo.interfaces.IUsuarioService;
+import com.example.demo.model.Categoria;
 import com.example.demo.model.Receta;
 import com.example.demo.model.Usuario;
 
@@ -88,6 +91,16 @@ public class Controlador {
 		
 		return "categorias";
 	}
+	@RequestMapping("/categoriasAjax")
+	public @ResponseBody List<Categoria> categoriasAjax (HttpServletRequest req) {
+		session = req.getSession(true);
+		System.out.println("entra en categorias");
+		List<Categoria> lista = categoriaService.listarCategorias();
+		
+		return lista;
+	}
+	
+	
 	
 	@RequestMapping("/recetas")
 	public String recetas(HttpServletRequest req) {
@@ -105,6 +118,17 @@ public class Controlador {
 		return "recetas";
 	}
 	
+	@RequestMapping("/recetas/{id_categoria}")
+	public String recetasCategoria(@RequestParam("id_categoria") int id_categoria, HttpServletRequest req) {
+		session = req.getSession(true);
+		System.out.println("entra en recetasCategoria");
+
+
+		List<Receta> listaRecetas = recetaService.listarPorCategoria(id_categoria); 
+		req.setAttribute("listarRecetas", listaRecetas);
+		
+		return "recetas";
+	}
 	
 	@RequestMapping("/receta")
 	public String recetaCompleta(HttpServletRequest req) {

@@ -26,8 +26,8 @@
 						<div class="jumbotron" style="padding-bottom: 5%; padding-top: 5%">
 							<h3 class="display-6" style="text-align: center;">${r.titulo}</h3>
 							<hr class="my-6">							
-							<img alt="" height="230" width="370"
-								src="https://static.hogarmania.com/archivos/201810/ensalada-rucula-xl-848x477x80xX.jpg">
+							<a href="/receta?id_receta=${r.id}"><img alt="" height="230" width="370"
+								src="https://static.hogarmania.com/archivos/201810/ensalada-rucula-xl-848x477x80xX.jpg"></a>
 							<hr class="my-4">
 							<p class="lead">
 							<div class="btn-group" role="group" aria-label="">
