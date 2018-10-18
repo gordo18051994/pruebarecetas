@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -119,7 +120,7 @@ public class Controlador {
 	}
 	
 	@RequestMapping("/recetas/{id_categoria}")
-	public String recetasCategoria(@RequestParam("id_categoria") int id_categoria, HttpServletRequest req) {
+	public String recetasCategoria(@PathVariable("id_categoria") int id_categoria, HttpServletRequest req) {
 		session = req.getSession(true);
 		System.out.println("entra en recetasCategoria");
 
