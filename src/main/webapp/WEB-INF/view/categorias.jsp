@@ -9,8 +9,10 @@
 <%@ include file="../plantillas/header.jsp"%>
 	<section class="container" style="max-width: 25%; float: left;">
 		<ul style="list-style: none;">
+
 			<c:forEach var="c" items="${listarCategorias}">
 				<li  style="text-align: center; padding: 10%;text-decoration: none;	"><h3><a class="categoria" href="">${c.nombre }</a></h3></li>
+
 			</c:forEach>
 		</ul>
 	</section>
