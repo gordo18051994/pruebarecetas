@@ -23,3 +23,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+#ignora las propiedades y el pom
+*.pom
+/src/main/resources/application.properties
