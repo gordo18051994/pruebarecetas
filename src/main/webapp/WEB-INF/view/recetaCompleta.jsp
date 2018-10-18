@@ -7,7 +7,7 @@
 <body>
 	<%@ include file="../plantillas/header.jsp"%>
 	
-	
+	Entra en receta ${receta.titulo}
 	
 </body>
 </html>

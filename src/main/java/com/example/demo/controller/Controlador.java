@@ -101,20 +101,19 @@ public class Controlador {
 //		List<Receta> listaRecetas = recetaService.listarPorCategoria(Integer.parseInt(req.getParameter("id_categoria")));
 //		
 //		req.setAttribute("listarRecetas", listaRecetas);
-		
+		req.setAttribute("listarCategorias", categoriaService.listarCategorias());
 		return "recetas";
 	}
 	
 	
-	@RequestMapping("/recetaCompleta")
+	@RequestMapping("/receta")
 	public String recetaCompleta(HttpServletRequest req) {
 		 session = req.getSession(true);
 		System.out.println("entra en recetaCompleta");
 		
-		Receta receta;
-		//receta = recetaService.bus
+		Receta receta = recetaService.buscarReceta(Integer.parseInt(req.getParameter("id_receta")));
 		
-		req.setAttribute("listarCategorias", categoriaService.listarCategorias());
+		req.setAttribute("receta", receta);	
 		
 		return "recetaCompleta";
 	}
