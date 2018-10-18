@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -99,6 +100,8 @@ public class Controlador {
 		return lista;
 	}
 	
+	
+	
 	@RequestMapping("/recetas")
 	public String recetas(HttpServletRequest req) {
 		session = req.getSession(true);
@@ -111,20 +114,30 @@ public class Controlador {
 //		List<Receta> listaRecetas = recetaService.listarPorCategoria(Integer.parseInt(req.getParameter("id_categoria")));
 //		
 //		req.setAttribute("listarRecetas", listaRecetas);
+		req.setAttribute("listarCategorias", categoriaService.listarCategorias());
+		return "recetas";
+	}
+	
+	@RequestMapping("/recetas/{id_categoria}")
+	public String recetasCategoria(@RequestParam("id_categoria") int id_categoria, HttpServletRequest req) {
+		session = req.getSession(true);
+		System.out.println("entra en recetasCategoria");
+
+
+		List<Receta> listaRecetas = recetaService.listarPorCategoria(id_categoria); 
+		req.setAttribute("listarRecetas", listaRecetas);
 		
 		return "recetas";
 	}
 	
-	
-	@RequestMapping("/recetaCompleta")
+	@RequestMapping("/receta")
 	public String recetaCompleta(HttpServletRequest req) {
 		 session = req.getSession(true);
 		System.out.println("entra en recetaCompleta");
 		
-		Receta receta;
-		//receta = recetaService.bus
+		Receta receta = recetaService.buscarReceta(Integer.parseInt(req.getParameter("id_receta")));
 		
-		req.setAttribute("listarCategorias", categoriaService.listarCategorias());
+		req.setAttribute("receta", receta);	
 		
 		return "recetaCompleta";
 	}
