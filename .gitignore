@@ -25,5 +25,5 @@
 /.nb-gradle/
 
 #ignora las propiedades y el pom
-*.pom
+*.xml
 /src/main/resources/application.properties
