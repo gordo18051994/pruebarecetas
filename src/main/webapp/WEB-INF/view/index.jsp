@@ -39,6 +39,9 @@
 
 </div>
 </div>
+<div class="container">
+	<div class="row" id="categorias"></div>
+</div>
 	<%@ include file="../plantillas/footer.jsp"%>
 </body>
 </html>
