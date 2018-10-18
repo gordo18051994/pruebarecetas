@@ -108,7 +108,7 @@ public class Controlador {
 		session = req.getSession(true);
 		System.out.println("entra en recetas");
 
-		List<Receta> listaRecetas = recetaService.listarPorCategoria(3);
+		List<Receta> listaRecetas = recetaService.listar();
 		req.setAttribute("listarRecetas", listaRecetas);
 		
 		// CONFIRMAR QUE ESTA COGIENDO LA ID DE LA RECETA

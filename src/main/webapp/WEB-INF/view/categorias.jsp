@@ -12,7 +12,7 @@
 		<ul style="list-style: none;">
 
 			<c:forEach var="c" items="${listarCategorias}">
-				<li  style="text-align: center; padding: 10%;text-decoration: none;	"><h3><a class="categoria" href="">${c.nombre }</a></h3></li>
+				<li  style="text-align: center; padding: 10%;text-decoration: none;	"><h3><a class="categoria" href="">${c.nombre}</a></h3></li>
 
 			</c:forEach>
 		</ul>
@@ -20,3 +20,4 @@
 </div>
 	<%@ include file="../plantillas/footer.jsp"%>
 </body>
+</html>
