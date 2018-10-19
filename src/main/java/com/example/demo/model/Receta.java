@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +27,30 @@ public class Receta implements Serializable {
 	@Column(name="descripcion")
 	private String descripcion;
 	
+	@ManyToOne
+	@JoinColumn(name="categoria_id", insertable=false, updatable=false)
+	private Categoria tablaCategoria;
+	
+	@ManyToOne
+	@JoinColumn(name="usuario_id", insertable=false, updatable=false)
+	private Usuario tablaUsuario;
+	
+	public Usuario getTablaUsuario() {
+		return tablaUsuario;
+	}
+
+	public void setTablaUsuario(Usuario tablaUsuario) {
+		this.tablaUsuario = tablaUsuario;
+	}
+
+	public Categoria getTablaCategoria() {
+		return tablaCategoria;
+	}
+
+	public void setTablaCategoria(Categoria tablaCategoria) {
+		this.tablaCategoria = tablaCategoria;
+	}
+
 	@Column(name="imagen")
 	private String imagen;
 	

@@ -1,12 +1,17 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +25,18 @@ public class Ingrediente implements Serializable {
 	
 	@Column(name="nombre")
 	private String nombre;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="id")
+	private List<IngredienteReceta> ingRecetas = new ArrayList<IngredienteReceta>();
+
+	public List<IngredienteReceta> getIngRecetas() {
+		return ingRecetas;
+	}
+
+	public void setIngRecetas(List<IngredienteReceta> ingRecetas) {
+		this.ingRecetas = ingRecetas;
+	}
 
 	public int getId() {
 		return id;

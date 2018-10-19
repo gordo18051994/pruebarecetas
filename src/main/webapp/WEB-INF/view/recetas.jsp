@@ -28,6 +28,8 @@
 							<hr class="my-6">
 							<a href="/receta?id_receta=${r.id}"><img alt="" height="230"
 								width="370" src="${r.imagen}"></a>
+								<input type="hidden" value="${r.tablaCategoria.nombre }">
+								<input type="hidden" value="${r.tablaUsuario.usuario }">
 							<hr class="my-4">
 							<div class="btn-group" role="group" aria-label="">
 								<a class="" style="margin-right: 10%;" href="#"><button

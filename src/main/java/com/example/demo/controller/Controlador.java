@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.interfaces.ICategoriaService;
+import com.example.demo.interfaces.IIngredienteRecetaService;
 import com.example.demo.interfaces.IRecetaService;
 import com.example.demo.interfaces.IUsuarioService;
 import com.example.demo.model.Categoria;
+import com.example.demo.model.IngredienteReceta;
 import com.example.demo.model.Receta;
 import com.example.demo.model.Usuario;
 
@@ -30,6 +32,9 @@ public class Controlador {
 	
 	@Autowired
 	private IRecetaService recetaService;
+	
+	@Autowired
+	private IIngredienteRecetaService  ingRecetaService;
 	
 	HttpSession session;
 	
@@ -135,11 +140,14 @@ public class Controlador {
 	@RequestMapping("/receta")
 	public String recetaCompleta(HttpServletRequest req) {
 		 session = req.getSession(true);
-		System.out.println("entra en recetaCompleta");
+		 
+		System.out.println("entra en receta completa");
+		 int receta_id = Integer.parseInt(req.getParameter("id_receta"));
+		 System.out.println(""+receta_id);
+		List<IngredienteReceta> pepe= (List<IngredienteReceta>) ingRecetaService.listarPorReceta(receta_id);
 		
-		Receta receta = recetaService.buscarReceta(Integer.parseInt(req.getParameter("id_receta")));
+		req.setAttribute("recetaCompleta", pepe);
 		
-		req.setAttribute("receta", receta);	
 		
 		return "recetaCompleta";
 	}
@@ -170,6 +178,20 @@ public class Controlador {
 	@RequestMapping("/perfil")
 	public String perfil(HttpServletRequest req) {
 		return "perfil";
+	}
+	
+	@RequestMapping("/añadirReceta")
+	public String añadirReceta(HttpServletRequest req) {
+		System.out.println("entra en add receta");
+		return "addReceta";
+	}
+	
+	@RequestMapping("addReceta1")
+	public String addReceta1(HttpServletRequest req) {
+		
+		
+		
+		return"perfil";
 	}
 	
 	

@@ -49,8 +49,10 @@
 			<div class="jumbotron" style="margin-top: 39%">
 							<h3 class="display-6" style="text-align: ">Ingredientes:</h3>
 							<hr class="my-4">
-									<c:forEach var="c" items="">
-								<! -- AQUI VAN LOS INGREDIENTES CARGADOS DE LA BASE DE DATOS -- />
+									<c:forEach var="c" items="${recetaCompleta }">
+										<ul>
+											<li id ="idingrediente" value="${c.tablaIngredientes}">${c.tablaIngredientes.nombre}</li>
+										</ul>
 
 									</c:forEach>
 							

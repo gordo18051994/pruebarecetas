@@ -22,15 +22,15 @@ public class IngredienteReceta implements Serializable {
 	@JoinColumn(name="receta_id")
 	private Receta tablaRecetas;
 	
-	@OneToOne
-	@JoinColumn(name="ingrediente_id")
+	@ManyToOne
+	@JoinColumn(name="ingrediente_id", insertable=false, updatable=false)
 	private Ingrediente tablaIngredientes;
 	
 	@Column(name="cantidad_ingrediente")
 	private float cantidad_ingrediente;
 	
-	@OneToOne
-	@JoinColumn(name="medida_ingrediente_id")
+	@ManyToOne
+	@JoinColumn(name="medida_ingrediente_id", insertable=false, updatable=false)
 	private Medida tablaMedidas;
 	
 	public int getId() {
@@ -52,6 +52,7 @@ public class IngredienteReceta implements Serializable {
 	public Receta getTablaRecetas() {
 		return tablaRecetas;
 	}
+	
 
 	public void setTablaRecetas(Receta tablaRecetas) {
 		this.tablaRecetas = tablaRecetas;

@@ -27,5 +27,17 @@ public class IngredienteRecetaSERVICE implements IIngredienteRecetaService {
 		}
 
 	}
-	
+
+	@Override
+	public IngredienteReceta listarRecetas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IngredienteReceta buscarRecetaCompleta(int receta_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
