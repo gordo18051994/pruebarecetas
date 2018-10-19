@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,40 +18,27 @@ public class IngredienteReceta implements Serializable {
 	@Column(name="id")
 	private int id;
 	
+	@ManyToOne
+	@JoinColumn(name="receta_id")
+	private Receta tablaRecetas;
+	
+	@OneToOne
+	@JoinColumn(name="ingrediente_id")
+	private Ingrediente tablaIngredientes;
+	
+	@Column(name="cantidad_ingrediente")
+	private float cantidad_ingrediente;
+	
+	@OneToOne
+	@JoinColumn(name="medida_ingrediente_id")
+	private Medida tablaMedidas;
+	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	@Column(name="receta_id")
-	private int receta_id;
-	
-	@Column(name="ingrediente_id")
-	private int ingrediente_id;
-	
-	@Column(name="cantidad_ingrediente")
-	private float cantidad_ingrediente;
-	
-	@Column(name="medida_ingrediente_id")
-	private int medida_ingrediente_id;
-
-	public int getReceta_id() {
-		return receta_id;
-	}
-
-	public void setReceta_id(int receta_id) {
-		this.receta_id = receta_id;
-	}
-
-	public int getIngrediente_id() {
-		return ingrediente_id;
-	}
-
-	public void setIngrediente_id(int ingrediente_id) {
-		this.ingrediente_id = ingrediente_id;
 	}
 
 	public float getCantidad_ingrediente() {
@@ -59,12 +49,28 @@ public class IngredienteReceta implements Serializable {
 		this.cantidad_ingrediente = cantidad_ingrediente;
 	}
 
-	public int getMedida_ingrediente_id() {
-		return medida_ingrediente_id;
+	public Receta getTablaRecetas() {
+		return tablaRecetas;
 	}
 
-	public void setMedida_ingrediente_id(int medida_ingrediente_id) {
-		this.medida_ingrediente_id = medida_ingrediente_id;
+	public void setTablaRecetas(Receta tablaRecetas) {
+		this.tablaRecetas = tablaRecetas;
+	}
+
+	public Ingrediente getTablaIngredientes() {
+		return tablaIngredientes;
+	}
+
+	public void setTablaIngredientes(Ingrediente tablaIngredientes) {
+		this.tablaIngredientes = tablaIngredientes;
+	}
+
+	public Medida getTablaMedidas() {
+		return tablaMedidas;
+	}
+
+	public void setTablaMedidas(Medida tablaMedidas) {
+		this.tablaMedidas = tablaMedidas;
 	}
 	
 	

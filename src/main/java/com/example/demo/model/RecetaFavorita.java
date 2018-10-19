@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,11 +20,13 @@ public class RecetaFavorita implements Serializable {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="receta_id")
-	private int receta_id;
+	@OneToOne
+	@JoinColumn(name="receta_id")
+	private Receta tablaRecetas;
 	
-	@Column(name="usuario_id")
-	private int usuario_id;
+	@OneToOne
+	@JoinColumn(name="usuario_id")
+	private Usuario tablaUsuarios;
 
 	public int getId() {
 		return id;
@@ -32,20 +36,22 @@ public class RecetaFavorita implements Serializable {
 		this.id = id;
 	}
 
-	public int getReceta_id() {
-		return receta_id;
+	public Receta getTablaRecetas() {
+		return tablaRecetas;
 	}
 
-	public void setReceta_id(int receta_id) {
-		this.receta_id = receta_id;
+	public void setTablaRecetas(Receta tablaRecetas) {
+		this.tablaRecetas = tablaRecetas;
 	}
 
-	public int getUsuario_id() {
-		return usuario_id;
+	public Usuario getTablaUsuarios() {
+		return tablaUsuarios;
 	}
 
-	public void setUsuario_id(int usuario_id) {
-		this.usuario_id = usuario_id;
+	public void setTablaUsuarios(Usuario tablaUsuarios) {
+		this.tablaUsuarios = tablaUsuarios;
 	}
+
+
 
 }
