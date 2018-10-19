@@ -36,7 +36,7 @@
 								<a class="" href="#"><button type="button"	class="btn btn-warning btn-lg">✉ COMPARTIR</button></a>
 							</div></center>
 							<hr class="my-4">
-									<center><img alt="" src="${receta.imagen}" height="550" width="650"></center>
+									<center><img alt="" src="${receta.imagen}" height="477" width="848"></center>
 								
 							
 							<p class="lead">
@@ -46,7 +46,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="container">		
-			<div class="jumbotron" style="margin-top: 39%">
+			<div class="jumbotron" style="">
 							<h3 class="display-6" style="text-align: ">Ingredientes:</h3>
 							<hr class="my-4">
 									<c:forEach var="c" items="${recetaCompleta }">

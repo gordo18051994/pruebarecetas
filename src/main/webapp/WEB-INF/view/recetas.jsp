@@ -24,7 +24,7 @@
 
 					<div class="col-md-4" style="height: 100%;">
 						<div class="jumbotron" style="padding-bottom: 5%; padding-top: 5%">
-							<h3 class="display-6" style="text-align: center;">${r.titulo}</h3>
+							<h3 class="display-6" style="text-align: center; height: 65px;">${r.titulo}</h3>
 							<hr class="my-6">
 							<a href="/receta?id_receta=${r.id}"><img alt="" height="230"
 								width="370" src="${r.imagen}"></a>

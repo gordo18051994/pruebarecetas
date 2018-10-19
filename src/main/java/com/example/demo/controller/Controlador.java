@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -44,6 +46,8 @@ public class Controlador {
 		m.setViewName("index");
 		return m;
 	}
+	
+		
 	@RequestMapping("/login")
 	public ModelAndView viewLogin(HttpServletRequest req) {
 		ModelAndView m = new ModelAndView();
@@ -152,7 +156,31 @@ public class Controlador {
 	
 		
 		
-		return "recetaCompleta";
+		List<Receta> listaRecetas = recetaService.listar();
+		
+		Random rand = new Random();
+		
+		int r1 = rand.nextInt(listaRecetas.size());
+		Receta uno = listaRecetas.get(r1);
+		listaRecetas.remove(r1);
+		int r2 = rand.nextInt(listaRecetas.size());
+		Receta dos = listaRecetas.get(r2);
+		listaRecetas.remove(r2);
+		int r3 = rand.nextInt(listaRecetas.size());
+		Receta tres= listaRecetas.get(r3);
+		
+		List<Receta> listaRecetasAleatoria = new ArrayList();
+		listaRecetasAleatoria.add(uno);
+		listaRecetasAleatoria.add(dos);
+		listaRecetasAleatoria.add(tres);
+		
+		session.setAttribute("recetasRandom", listaRecetasAleatoria);
+		req.setAttribute("receta", receta);	
+
+
+		
+		
+		return "recetaComplet";
 	}
 	
 	
