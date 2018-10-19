@@ -109,13 +109,13 @@ public class Controlador {
 		System.out.println("entra en recetas");
 
 		List<Receta> listaRecetas = recetaService.listar();
-		req.setAttribute("listarRecetas", listaRecetas);
+		session.setAttribute("listarRecetas", listaRecetas);
 		
 		// CONFIRMAR QUE ESTA COGIENDO LA ID DE LA RECETA
 //		List<Receta> listaRecetas = recetaService.listarPorCategoria(Integer.parseInt(req.getParameter("id_categoria")));
 //		
 //		req.setAttribute("listarRecetas", listaRecetas);
-		req.setAttribute("listarCategorias", categoriaService.listarCategorias());
+		session.setAttribute("listarCategorias", categoriaService.listarCategorias());
 		return "recetas";
 	}
 	
@@ -127,9 +127,9 @@ public class Controlador {
 
 
 		List<Receta> listaRecetas = recetaService.listarPorCategoria(id_categoria); 
-		req.setAttribute("listarRecetas", listaRecetas);
+		session.setAttribute("listarRecetas", listaRecetas);
 		
-		return recetas(req);
+		return "recetas";
 	}
 	
 	@RequestMapping("/receta")
@@ -140,6 +140,19 @@ public class Controlador {
 		Receta receta = recetaService.buscarReceta(Integer.parseInt(req.getParameter("id_receta")));
 		
 		req.setAttribute("receta", receta);	
+		
+		return "recetaCompleta";
+	}
+	
+	
+	@RequestMapping("/recetaUsuario")
+	public String recetaUsuario(HttpServletRequest req) {
+		 session = req.getSession(true);
+		System.out.println("entra en recetaUsuario");
+		Usuario u = (Usuario) session.getAttribute("usuario");
+		Receta receta = (Receta)recetaService.listarPorUsuario(u.getId());
+		
+		req.setAttribute("recetaUsuario", receta);	
 		
 		return "recetaCompleta";
 	}

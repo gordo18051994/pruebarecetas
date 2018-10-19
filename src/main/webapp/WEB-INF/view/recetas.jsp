@@ -24,32 +24,27 @@
 
 					<div class="col-md-4" style="height: 100%;">
 						<div class="jumbotron" style="padding-bottom: 5%; padding-top: 5%">
-							<h3 class="display-6" style="text-align: center; height: 65px;">${r.titulo}</h3>
-							<hr class="my-6">							
-							<a href="/receta?id_receta=${r.id}"><img alt="" height="230" width="370" src="https://static.hogarmania.com/archivos/201810/ensalada-rucula-xl-848x477x80xX.jpg"></a>
+							<h3 class="display-6" style="text-align: center;">${r.titulo}</h3>
+							<hr class="my-6">
+							<a href="/receta?id_receta=${r.id}"><img alt="" height="230"
+								width="370" src="${r.imagen}"></a>
 							<hr class="my-4">
 							<div class="btn-group" role="group" aria-label="">
-								<a class="" style="margin-right: 10%;" href="#"><button type="button" class="btn btn-warning btn-lg">★</button></a>
-								<a class="" style="margin-right: 10%;" href="/receta?id_receta=${r.id}"><button	type="button" class="btn btn-warning btn-lg">RECETA COMPLETA</button></a>  
-								<a class="" href="#"><button type="button" class="btn btn-warning btn-lg">✉</button></a>
+								<a class="" style="margin-right: 10%;" href="#"><button
+										type="button" class="btn btn-warning btn-lg">★</button></a> <a
+									class="" style="margin-right: 10%;"
+									href="/receta?id_receta=${r.id}"><button type="button"
+										class="btn btn-warning btn-lg">RECETA COMPLETA</button></a> <a
+									class="" href="#"><button type="button"
+										class="btn btn-warning btn-lg">✉</button></a>
 							</div>
-						</div>	
+							</p>
+						</div>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
-
 	</div>
-
-
-
-
-
-
-
-
-
-
-	</div>
+	<%@ include file="../plantillas/footer.jsp"%>
 </body>
 </html>
