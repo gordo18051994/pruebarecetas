@@ -22,14 +22,13 @@
 			<div class="row">
 				<c:forEach var="r" items="${listarRecetas}">
 
-					<div class="col-md-4">
+					<div class="col-md-4" style="height: 100%;">
 						<div class="jumbotron" style="padding-bottom: 5%; padding-top: 5%">
 							<h3 class="display-6" style="text-align: center;">${r.titulo}</h3>
 							<hr class="my-6">
 							<a href="/receta?id_receta=${r.id}"><img alt="" height="230"
 								width="370" src="${r.imagen}"></a>
 							<hr class="my-4">
-							<p class="lead">
 							<div class="btn-group" role="group" aria-label="">
 								<a class="" style="margin-right: 10%;" href="#"><button
 										type="button" class="btn btn-warning btn-lg">★</button></a> <a

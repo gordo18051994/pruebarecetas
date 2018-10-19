@@ -119,16 +119,17 @@ public class Controlador {
 		return "recetas";
 	}
 	
-	@RequestMapping("/recetas/{id_categoria}")
-	public String recetasCategoria(@PathVariable("id_categoria") int id_categoria, HttpServletRequest req) {
+	@RequestMapping("/recetasCategoria")
+	public String recetasCategoria(HttpServletRequest req) {
 		session = req.getSession(true);
+		int id_categoria = Integer.parseInt(req.getParameter("id_categoria"));
 		System.out.println("entra en recetasCategoria");
 
 
 		List<Receta> listaRecetas = recetaService.listarPorCategoria(id_categoria); 
 		req.setAttribute("listarRecetas", listaRecetas);
 		
-		return "recetas";
+		return recetas(req);
 	}
 	
 	@RequestMapping("/receta")
