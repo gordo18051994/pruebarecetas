@@ -140,13 +140,16 @@ public class Controlador {
 	@RequestMapping("/receta")
 	public String recetaCompleta(HttpServletRequest req) {
 		 session = req.getSession(true);
-		 
 		System.out.println("entra en receta completa");
 		 int receta_id = Integer.parseInt(req.getParameter("id_receta"));
+		 Receta receta = recetaService.buscarReceta(receta_id);
+		 System.out.println(receta.getTitulo());
 		 System.out.println(""+receta_id);
-		List<IngredienteReceta> pepe= (List<IngredienteReceta>) ingRecetaService.listarPorReceta(receta_id);
+		List<IngredienteReceta> pepe= ingRecetaService.listarPorReceta(receta_id);
 		
+		req.setAttribute("receta", receta);
 		req.setAttribute("recetaCompleta", pepe);
+	
 		
 		
 		return "recetaCompleta";

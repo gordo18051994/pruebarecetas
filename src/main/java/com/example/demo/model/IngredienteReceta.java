@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="ingredientesrecetas")
 public class IngredienteReceta implements Serializable {
@@ -19,10 +21,12 @@ public class IngredienteReceta implements Serializable {
 	private int id;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="receta_id")
 	private Receta tablaRecetas;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="ingrediente_id", insertable=false, updatable=false)
 	private Ingrediente tablaIngredientes;
 	
@@ -30,6 +34,7 @@ public class IngredienteReceta implements Serializable {
 	private float cantidad_ingrediente;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="medida_ingrediente_id", insertable=false, updatable=false)
 	private Medida tablaMedidas;
 	

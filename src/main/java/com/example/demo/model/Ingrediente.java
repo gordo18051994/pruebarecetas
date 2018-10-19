@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="ingredientes")
 public class Ingrediente implements Serializable {
@@ -27,6 +29,7 @@ public class Ingrediente implements Serializable {
 	private String nombre;
 	
 	@OneToMany(cascade=CascadeType.ALL)
+	@JsonIgnore
 	@JoinColumn(name="id")
 	private List<IngredienteReceta> ingRecetas = new ArrayList<IngredienteReceta>();
 
