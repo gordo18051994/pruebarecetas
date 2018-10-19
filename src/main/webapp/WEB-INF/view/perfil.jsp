@@ -17,6 +17,9 @@
   	<br>
   	<h5 style="margin-left: 50px;"><%=u.getEmail() %></h5>
   	</div>
+  	<input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 130px; color: black;" value="Añadir Recetas">
+  	<input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 200px; color: black;" value="Borrar Receta">
+  	<input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 220px; color: black;" value="Actualizar Receta">
   	</div>
 </div>
 
