@@ -19,6 +19,7 @@ import com.example.demo.interfaces.ICategoriaService;
 import com.example.demo.interfaces.IIngredienteRecetaService;
 import com.example.demo.interfaces.IRecetaService;
 import com.example.demo.interfaces.IUsuarioService;
+import com.example.demo.model.Anuncio;
 import com.example.demo.model.Categoria;
 import com.example.demo.model.IngredienteReceta;
 import com.example.demo.model.Receta;
@@ -222,6 +223,25 @@ public class Controlador {
 		
 		return"perfil";
 	}
+	
+	@RequestMapping("/borrarReceta")
+	public String borrarAnuncio(HttpServletRequest req) {
+		System.err.println("entra en borrar receta");
+		recetaService.borrarReceta(receta_id);Service delete(Integer.parseInt(req.getParameter("id_anuncio")));
+		return deleteAnuncios(req);
+
+	}
+	
+	@RequestMapping("/deleteReceta")
+	public String deleteAnuncios(HttpServletRequest req) {
+		System.err.println("entra en deleteAnuncios");
+
+		List<Receta> aux = recetaService.listarPorUsuario((String)session.getAttribute("usuario"));
+		session.setAttribute("misAnuncios", aux);
+		
+		return "misanuncios";
+	}
+
 	
 	
 	

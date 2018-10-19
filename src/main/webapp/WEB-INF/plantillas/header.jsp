@@ -8,7 +8,7 @@
       <div  class="pull-left">
        <!-- <h1><a href="#intro" class="scrollto">Recetas de la abuela</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <img id="logo" src="images/logoAnuntiate.png" alt="" title="" />
+        <a href="/" ><img id="logo" src="images/logoRecetaAbuela.png" alt="" title="" /></a>
       </div>
 		<% Usuario u = (Usuario) session.getAttribute("usuario");%>
       <nav id="nav-menu-container">

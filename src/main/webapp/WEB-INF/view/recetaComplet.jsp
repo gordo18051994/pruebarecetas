@@ -15,7 +15,7 @@
 			</div>
 	<div class="row">
 		<div class="col-md-3" id="lateralCategorias">	
-		<div class="jumbotron" style="">
+		<div class="" style="">
 							<h2 class="display-6" style="text-align: left: ;">Categorías:</h2>
 							<hr class="my-4">	
 		<section class="container" style="max-width: 100%; margin-left: 0px;">
@@ -48,7 +48,7 @@
 							Usuario
 					</h5>
 					<p>
-							nombre del usuario que ha subido la receta
+							${receta.tablaUsuario.usuario}
 					</p>
 
 					<div class="btn-group" role="group" aria-label="">
@@ -62,7 +62,12 @@
 						Ingredientes
 					</h2>
 					<hr class="my-4">
-					
+					<c:forEach var="c" items="${recetaCompleta}">
+										<ul>
+											<h4><li id ="idingrediente" value="${c.tablaIngredientes}">${c.tablaIngredientes.nombre}</li></h4>
+										</ul>
+
+									</c:forEach>
 				</div>
 			</div>
 			
