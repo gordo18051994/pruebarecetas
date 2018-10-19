@@ -10,14 +10,14 @@
         <!-- Uncomment below if you prefer to use an image logo -->
         <img id="logo" src="images/logoAnuntiate.png" alt="" title="" />
       </div>
-
+		<% Usuario u = (Usuario) session.getAttribute("usuario");%>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="/">Inicio</a></li>
           <li><a href="/categorias">Categorias</a></li>
-          <li><a href="/login">Login</a></li>
-          <% Usuario u = (Usuario) session.getAttribute("usuario");
-          	if(u != null) {
+          <% if(u == null) { %>
+          <li><a  href="/login">Login</a></li>
+          <%}else {
           %>
            <li class="menu-has-children"><a href=""><%=u.getUsuario() %></a>
             <ul>
