@@ -154,15 +154,13 @@ public class Controlador {
 	
 	
 	@RequestMapping("/recetaUsuario")
-	public String recetaUsuario(HttpServletRequest req) {
+	public @ResponseBody List<Receta> recetaUsuario(HttpServletRequest req) {
 		 session = req.getSession(true);
 		System.out.println("entra en recetaUsuario");
 		Usuario u = (Usuario) session.getAttribute("usuario");
-		Receta receta = (Receta)recetaService.listarPorUsuario(u.getId());
+		List<Receta> recetasUsuario = recetaService.listarPorUsuario(u.getId());
 		
-		req.setAttribute("recetaUsuario", receta);	
-		
-		return "recetaCompleta";
+		return recetasUsuario;
 	}
 	
 	

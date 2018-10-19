@@ -24,7 +24,7 @@
 </div>
 
 <div class="continer" style="margin-left: 100px; float:left;">
-<div  type="button" class="btn btn-default" id="RecetasFavoritas" style="margin-left: 70px; width: 150px; height: 40px; text-align: center;" value="RecetasFavoritas">RecetasFavoritas </div>
+<div  type="button" class="btn btn-success" id="RecetasFavoritas" style="margin-left: 70px; width: 150px; height: 40px; text-align: center;" value="RecetasFavoritas">RecetasFavoritas </div>
 <br>
 <br>
 <div class="scrollspy" data-spy="scroll" data-target="#RecetasFavoritas" data-offset="0" style="background: #ffffff; width: 300px; height: 400px; overflow-y: scroll;">
@@ -49,28 +49,9 @@
 
 
 
-<div class="container" style="margin-left: 600px;">
-<div  type="button" class="btn btn-default" id="MisRecetas" style="margin-left: 60px; width: 150px; height: 40px; text-align: center;" value="Mis Recetas">Mis Recetas </div>
-<br>
-<br>
-<div class="scrollspy" data-spy="scroll" data-target="#MisRecetas" data-offset="0" style="background: #ffffff;margin-right:0px; width: 300px; height: 400px; overflow-y: scroll; ">
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-</div>
+<div class="container" style="margin-left: 600px;" id="recetasUsuario">
+<input  type="button" class="btn btn-success" id="MisRecetas" style="margin-left: 60px; width: 150px; height: 40px; text-align: center;" value="Mis Recetas"></input>
+
 </div>
 
 
