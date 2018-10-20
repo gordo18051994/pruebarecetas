@@ -13,5 +13,6 @@ public interface IRecetaService {
 	public Receta addReceta(Receta receta);
 	public void actualizarReceta(Receta receta);
 	public Receta buscarReceta(int receta_id);
+	public List<Receta> listarPorUsuario(String attribute);
 
 }

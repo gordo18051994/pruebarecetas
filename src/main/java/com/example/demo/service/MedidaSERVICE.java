@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,15 @@ public class MedidaSERVICE implements IMedidaService {
 			aux = null;
 		}
 		return aux;
+	}
+
+	@Override
+	public List<Medida> listarMedidas() {
+		List<Medida> medidas = new ArrayList();
+		for (Medida m : medidaRepository.findAll()) {
+			medidas.add(m);
+		}
+		return medidas;
 	}
 
 }

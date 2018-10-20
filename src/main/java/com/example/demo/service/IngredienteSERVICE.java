@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +29,15 @@ public class IngredienteSERVICE implements IIngredienteService {
 		}
 		return aux;
 	}
+
+	@Override
+	public List<Ingrediente> listarIngredientes() {
+		List<Ingrediente> ingredientes = new ArrayList();
+		for (Ingrediente i : ingredienteRepository.findAll()) {
+			ingredientes.add(i);
+		}
+		return ingredientes;
+	}
+	
 	
 }

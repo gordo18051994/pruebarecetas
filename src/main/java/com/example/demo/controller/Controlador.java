@@ -17,11 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.interfaces.ICategoriaService;
 import com.example.demo.interfaces.IIngredienteRecetaService;
+import com.example.demo.interfaces.IIngredienteService;
+import com.example.demo.interfaces.IMedidaService;
 import com.example.demo.interfaces.IRecetaService;
 import com.example.demo.interfaces.IUsuarioService;
-import com.example.demo.model.Anuncio;
 import com.example.demo.model.Categoria;
+import com.example.demo.model.Ingrediente;
 import com.example.demo.model.IngredienteReceta;
+import com.example.demo.model.Medida;
 import com.example.demo.model.Receta;
 import com.example.demo.model.Usuario;
 
@@ -38,6 +41,12 @@ public class Controlador {
 	
 	@Autowired
 	private IIngredienteRecetaService  ingRecetaService;
+	
+	@Autowired
+	private IIngredienteService ingredienteService;
+	
+	@Autowired
+	private IMedidaService medidaService;
 	
 	HttpSession session;
 	
@@ -213,6 +222,10 @@ public class Controlador {
 	@RequestMapping("/añadirReceta")
 	public String añadirReceta(HttpServletRequest req) {
 		System.out.println("entra en add receta");
+		List<Medida> medidas = medidaService.listarMedidas();
+		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
+		req.setAttribute("listarIngredientes", ingredientes);
+		req.setAttribute("listarMedidas", medidas);
 		return "addReceta";
 	}
 	
@@ -224,16 +237,8 @@ public class Controlador {
 		return"perfil";
 	}
 	
-	@RequestMapping("/borrarReceta")
-	public String borrarAnuncio(HttpServletRequest req) {
-		System.err.println("entra en borrar receta");
-		recetaService.borrarReceta(receta_id);Service delete(Integer.parseInt(req.getParameter("id_anuncio")));
-		return deleteAnuncios(req);
-
-	}
-	
 	@RequestMapping("/deleteReceta")
-	public String deleteAnuncios(HttpServletRequest req) {
+	public String deleteReceta(HttpServletRequest req) {
 		System.err.println("entra en deleteAnuncios");
 
 		List<Receta> aux = recetaService.listarPorUsuario((String)session.getAttribute("usuario"));
