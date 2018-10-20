@@ -224,8 +224,10 @@ public class Controlador {
 		System.out.println("entra en add receta");
 		List<Medida> medidas = medidaService.listarMedidas();
 		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
+		List<Categoria> categorias = categoriaService.listarCategorias();
 		req.setAttribute("listarIngredientes", ingredientes);
 		req.setAttribute("listarMedidas", medidas);
+		req.setAttribute("listarCategorias", categorias);
 		return "addReceta";
 	}
 	
