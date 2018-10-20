@@ -300,16 +300,17 @@ public class Controlador {
 	@RequestMapping("/borrarReceta")
 	public String borrarReceta(HttpServletRequest req) {
 		System.err.println("entra en borrar receta");
-		recetaService.borrarReceta(Integer.parseInt("id_receta"));
+		recetaService.borrarReceta(Integer.parseInt(req.getParameter("id_receta")));
 		return deleteReceta(req);
 
 	}
 	
 	@RequestMapping("/deleteReceta")
 	public String deleteReceta(HttpServletRequest req) {
+		session = req.getSession(true);
 		System.err.println("entra en deleteReceta");
-
-		List<Receta> aux = recetaService.listarPorUsuario((String)session.getAttribute("usuario"));
+		Usuario u = (Usuario) session.getAttribute("usuario");
+		List<Receta> aux = recetaService.listarPorUsuario(u.getId());
 		session.setAttribute("misrecetas", aux);
 		
 		return "misRecetas";
