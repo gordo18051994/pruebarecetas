@@ -6,15 +6,24 @@ var init = function() {
 		}
 	})
 	
-	$("#MisRecetas").on('click', function(){
+	$("#recetasFavoritas").append('<div class="scrollspy" data-spy="scroll" data-target="#RecetasFavoritas" data-offset="0" style="background: #ffffff;margin-right:0px; width: 300px; height: 400px; overflow-y: scroll;"></div>');	
+		$.post('/recetaFavoritas', function(recetas) {
+			for(i = 0; i < recetas.length; i++) {
+				$(".scrollspy").append('<h6 id="panel'+ recetas[i].tablaRecetas.id+'" class="font-weight-bold" style="text-align: center"><a href="receta?id_receta='+ recetas[i].tablaRecetas.id+'">'+ recetas[i].tablaRecetas.titulo+'</a></h6>')
+			}
+		})
+
 		$("#recetasUsuario").append('<div class="scrollspy" data-spy="scroll" data-target="#MisRecetas" data-offset="0" style="background: #ffffff;margin-right:0px; width: 300px; height: 400px; overflow-y: scroll;"></div>');
-	$.post('recetaUsuario', function(recetas) {
-		for(i = 0; i < recetas.length; i++) {
-			$(".scrollspy").append('<h6 id="panel'+ recetas[i].id+'" class="font-weight-bold" style="text-align: center"><a href="receta?id_receta='+ recetas[i].id+'">'+ recetas[i].titulo+'</a></h6>')
-			
-		}
-	})
-	})
+			$.post('/recetaUsuario', function(recetas) {
+				for(i = 0; i < recetas.length; i++) {
+					$(".scrollspy").append('<h6 id="panel'+ recetas[i].id+'" class="font-weight-bold" style="text-align: center"><a href="receta?id_receta='+ recetas[i].id+'">'+ recetas[i].titulo+'</a></h6>')
+				}
+		})
+	
+	
+		
+		
+	
 }
 
 $().ready(init); 

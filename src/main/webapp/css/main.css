@@ -4,7 +4,6 @@
 }
 
 body {
-background-image: ;
 margin-top: 8%;
 margin-bottom: 0;
 height: auto;
@@ -13,11 +12,6 @@ height: auto;
 	text-decoration: none;
 	color:red;
 }	
-a:hover {
-	font-size: 150%;
-	text-decoration: none;
-	color:red;
-}
 
 .card {
     border-radius:0;

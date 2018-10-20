@@ -40,4 +40,9 @@ public class IngredienteRecetaSERVICE implements IIngredienteRecetaService {
 		return null;
 	}
 
+	@Override
+	public void insertarReceta(IngredienteReceta a) {
+		ingredienteRecetaRepository.save(a);
+	}
+
 }

@@ -22,7 +22,7 @@
 			<ul style="list-style: none; ">
 				<c:forEach var="c" items="${listarCategorias}">
 					<li style="text-align: left; padding: 5%; text-decoration: none;"><h3>
-							<a class="categoria" href="">${c.nombre}</a>
+							<a class="categoria" href="/recetasCategoria?id_categoria=${c.id }">${c.nombre}</a>
 						</h3></li>
 				</c:forEach>
 			</ul>

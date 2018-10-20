@@ -23,28 +23,9 @@
   	</div>
 </div>
 
-<div class="continer" style="margin-left: 100px; float:left;">
-<div  type="button" class="btn btn-success" id="RecetasFavoritas" style="margin-left: 70px; width: 150px; height: 40px; text-align: center;" value="RecetasFavoritas">RecetasFavoritas </div>
-<br>
-<br>
-<div class="scrollspy" data-spy="scroll" data-target="#RecetasFavoritas" data-offset="0" style="background: #ffffff; width: 300px; height: 400px; overflow-y: scroll;">
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-  <h6 id="panel1" class="font-weight-bold" style="text-align: center">section1</h6>
-</div>
+<div class="continer" style="margin-left: 100px; float:left;" id="recetasFavoritas">
+<input  type="button" class="btn btn-success" id="RecetasFavoritas" style="margin-left: 70px; width: 150px; height: 40px; text-align: center;" value="RecetasFavoritas"></input>
+
 </div>
 
 

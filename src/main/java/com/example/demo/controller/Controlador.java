@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.SortingFocusTraversalPolicy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.interfaces.ICategoriaService;
 import com.example.demo.interfaces.IIngredienteRecetaService;
 import com.example.demo.interfaces.IIngredienteService;
-import com.example.demo.interfaces.IMedidaService;
+import com.example.demo.interfaces.IRecetaFavoritaService;
 import com.example.demo.interfaces.IRecetaService;
 import com.example.demo.interfaces.IUsuarioService;
 import com.example.demo.model.Categoria;
@@ -26,6 +27,7 @@ import com.example.demo.model.Ingrediente;
 import com.example.demo.model.IngredienteReceta;
 import com.example.demo.model.Medida;
 import com.example.demo.model.Receta;
+import com.example.demo.model.RecetaFavorita;
 import com.example.demo.model.Usuario;
 
 @Controller
@@ -41,6 +43,13 @@ public class Controlador {
 	
 	@Autowired
 	private IIngredienteRecetaService  ingRecetaService;
+	
+	@Autowired
+	private IRecetaFavoritaService recetasFavoritas;
+	
+	@Autowired
+	private IIngredienteService ingredienteService;
+	
 	
 	@Autowired
 	private IIngredienteService ingredienteService;
@@ -204,6 +213,15 @@ public class Controlador {
 		return recetasUsuario;
 	}
 	
+	@RequestMapping("/recetaFavoritas")
+	public @ResponseBody List<RecetaFavorita> recetaFavoritas(HttpServletRequest req) {
+		 session = req.getSession(true);
+		System.out.println("entra en recetaFavoritas");
+		Usuario u = (Usuario) session.getAttribute("usuario");
+		List<RecetaFavorita> recetas =  recetasFavoritas.listarPorUsuario(u.getId());
+		
+		return recetas;
+	}
 	
 	@RequestMapping("/cerrarSesion")
 	public ModelAndView cerrarSesion(HttpServletRequest req) {
@@ -231,11 +249,48 @@ public class Controlador {
 		return "addReceta";
 	}
 	
+	@RequestMapping("/añadirRecetaBBDD")
+	public String añadirRecetaBBDD(HttpServletRequest req) {
+		System.out.println("entra en add receta");
+		HttpSession session = req.getSession(true);
+		Usuario u = (Usuario) session.getAttribute("usuario");
+		int categoria = Integer.parseInt(req.getParameter("categoria"));
+		String titulo = req.getParameter("titulo");
+		String descripcion = req.getParameter("descripcion");
+		String[] ingredientes = req.getParameterValues("ingredientes");
+		for (String string : ingredientes) {
+			System.out.println(string);
+		}
+		//String[] cantidad = req.getParameterValues("cantidad");
+		//int medida = Integer.parseInt(req.getParameter("medida"));
+		Receta rec = new Receta();
+		rec.setCategoria_id(categoria);
+		rec.setDescripcion(descripcion);
+		rec.setTitulo(titulo);
+		rec.setUsuario_id(u.getId());
+		Receta recetaInsertada = recetaService.addReceta(rec);
+		System.out.println("Receta insertada");
+		Medida m = new Medida();
+		m.setId(1);
+		m.setNombre("kilos");
+		for (String s : ingredientes) {
+			Ingrediente aux = ingredienteService.buscarIngrediente(Integer.parseInt(s));
+			System.out.println(aux.getNombre());
+			System.out.println(aux.getId());
+			IngredienteReceta ingredientesInsertados = new IngredienteReceta();
+			ingredientesInsertados.setTablaIngredientes(aux);
+			ingredientesInsertados.setTablaMedidas(m);
+			ingredientesInsertados.setCantidad_ingrediente(Float.parseFloat("200"));
+			ingredientesInsertados.setTablaRecetas(recetaInsertada);
+			ingRecetaService.insertarReceta(ingredientesInsertados);
+		}
+		System.out.println("insertado de puta madre");
+		return "addReceta";
+	}
+	
+	
 	@RequestMapping("addReceta1")
 	public String addReceta1(HttpServletRequest req) {
-		
-		
-		
 		return"perfil";
 	}
 	
@@ -249,8 +304,6 @@ public class Controlador {
 		return "misanuncios";
 	}
 
-	
-	
 	
 	
 }
