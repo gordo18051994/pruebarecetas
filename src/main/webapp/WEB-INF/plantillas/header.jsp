@@ -14,14 +14,14 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="/">Inicio</a></li>
-          <li><a href="/categorias">Categorias</a></li>
+          <li><a href="/recetas">Recetas</a></li>
           <% if(u == null) { %>
           <li><a  href="/login">Login</a></li>
           <%}else {
           %>
            <li class="menu-has-children"><a href=""><%=u.getUsuario() %></a>
             <ul>
-              <li><a href="#">Mis recetas</a></li>
+              <li><a href="/misRecetas">Mis recetas</a></li>
               <li><a href="/perfil">Perfil</a></li>
               <li><a href="#">Subir anuncios</a></li>
               <li><a href="/cerrarSesion">Cerrar sesion</a></li>

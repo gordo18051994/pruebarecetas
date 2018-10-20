@@ -18,24 +18,10 @@
   	<h5 style="margin-left: 50px;"><%=u.getEmail() %></h5>
   	</div>
   	<a href="/añadirReceta" ><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 130px; color: black;" value="Añadir Recetas"></a>
-  	<a href=""><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 200px; color: black;" value="Borrar Receta"></a>
-  	<a href=""><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 220px; color: black;" value="Actualizar Receta"></a>
+  	<a href="/misRecetas"><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 200px; color: black;" value="Mis Recetas"></a>
+  	<a href="/recetaFavoritas"><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 220px; color: black;" value="Recetas Favoritas"></a>
   	</div>
 </div>
-
-<div class="continer" style="margin-left: 100px; float:left;" id="recetasFavoritas">
-<input  type="button" class="btn btn-success" id="RecetasFavoritas" style="margin-left: 70px; width: 150px; height: 40px; text-align: center;" value="RecetasFavoritas"></input>
-
-</div>
-
-
-
-<div class="container" style="margin-left: 600px;" id="recetasUsuario">
-<input  type="button" class="btn btn-success" id="MisRecetas" style="margin-left: 60px; width: 150px; height: 40px; text-align: center;" value="Mis Recetas"></input>
-
-</div>
-
-
 
 </div>
 <br>

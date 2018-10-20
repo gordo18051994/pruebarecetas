@@ -9,15 +9,9 @@
 <body>
 	<%@ include file="../plantillas/header.jsp"%>
 	<div class="container-fluid">
-		<section class="container" style="max-width: 25%; float: left;">
-			<ul style="list-style: none;">
-				<c:forEach var="c" items="${listarCategorias}">
-					<li style="text-align: center; padding: 5%; text-decoration: none;"><h3>
-							<a class="categoria" href="">${c.nombre}</a>
-						</h3></li>
-				</c:forEach>
-			</ul>
-		</section>
+	<div class="row">
+		<%@ include file="../plantillas/categorias.jsp"%>
+		<div class="col-md-9">
 		<div class="container-fluid" style="padding-left: 5%;">
 			<div class="row">
 				<c:forEach var="r" items="${listarRecetas}">
@@ -40,13 +34,14 @@
 									class="" href="#"><button type="button"
 										class="btn btn-warning btn-lg">✉</button></a>
 							</div>
-							</p>
+							
 						</div>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
-		
+		</div>
+	</div>
 		
 	</div>
 	<%@ include file="../plantillas/footer.jsp"%>

@@ -51,7 +51,6 @@ public class Controlador {
 	@Autowired
 	private IIngredienteService ingredienteService;
 	
-	
 	@Autowired
 	private IMedidaService medidaService;
 	
@@ -284,7 +283,7 @@ public class Controlador {
 			ingredientesInsertados.setTablaIngredientes(aux);
 			ingredientesInsertados.setTablaMedidas(m);
 			ingredientesInsertados.setCantidad_ingrediente(Float.parseFloat("200"));
-			ingredientesInsertados.setTablaRecetas(recetaInsertada);
+			ingredientesInsertados.setTablaRecetas(rec);
 			ingRecetaService.insertarReceta(ingredientesInsertados);
 		}
 		System.out.println("insertado de puta madre");
