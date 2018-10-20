@@ -80,4 +80,10 @@ public class RecetaSERVICE implements IRecetaService {
 		return aux;
 	}
 
+	@Override
+	public List<Receta> listarPorUsuario(String attribute) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

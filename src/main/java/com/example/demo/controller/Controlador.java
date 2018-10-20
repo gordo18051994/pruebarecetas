@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.interfaces.ICategoriaService;
 import com.example.demo.interfaces.IIngredienteRecetaService;
 import com.example.demo.interfaces.IIngredienteService;
+import com.example.demo.interfaces.IMedidaService;
 import com.example.demo.interfaces.IRecetaFavoritaService;
 import com.example.demo.interfaces.IRecetaService;
 import com.example.demo.interfaces.IUsuarioService;
@@ -50,9 +51,6 @@ public class Controlador {
 	@Autowired
 	private IIngredienteService ingredienteService;
 	
-	
-	@Autowired
-	private IIngredienteService ingredienteService;
 	
 	@Autowired
 	private IMedidaService medidaService;
@@ -177,6 +175,7 @@ public class Controlador {
 		
 		List<Receta> listaRecetas = recetaService.listar();
 		
+		// Random para mostrar 3 recetas aleatorias
 		Random rand = new Random();
 		
 		int r1 = rand.nextInt(listaRecetas.size());
@@ -195,22 +194,26 @@ public class Controlador {
 		
 		session.setAttribute("recetasRandom", listaRecetasAleatoria);
 		req.setAttribute("receta", receta);	
+		session.setAttribute("listarCategorias", categoriaService.listarCategorias());
 
 
 		
 		
-		return "recetaComplet";
+		return "recetaCompleta";
 	}
 	
 	
-	@RequestMapping("/recetaUsuario")
-	public @ResponseBody List<Receta> recetaUsuario(HttpServletRequest req) {
+	@RequestMapping("/misRecetas")
+	public String misRecetas(HttpServletRequest req) {
 		 session = req.getSession(true);
-		System.out.println("entra en recetaUsuario");
+		System.out.println("entra en misRecetas");
 		Usuario u = (Usuario) session.getAttribute("usuario");
 		List<Receta> recetasUsuario = recetaService.listarPorUsuario(u.getId());
+		req.setAttribute("misrecetas", recetasUsuario);
+		System.err.println(recetasUsuario);
+		session.getAttribute("listarCategorias");
 		
-		return recetasUsuario;
+		return "misRecetas";
 	}
 	
 	@RequestMapping("/recetaFavoritas")
@@ -294,14 +297,22 @@ public class Controlador {
 		return"perfil";
 	}
 	
+	@RequestMapping("/borrarReceta")
+	public String borrarReceta(HttpServletRequest req) {
+		System.err.println("entra en borrar receta");
+		recetaService.borrarReceta(Integer.parseInt("id_receta"));
+		return deleteReceta(req);
+
+	}
+	
 	@RequestMapping("/deleteReceta")
 	public String deleteReceta(HttpServletRequest req) {
-		System.err.println("entra en deleteAnuncios");
+		System.err.println("entra en deleteReceta");
 
 		List<Receta> aux = recetaService.listarPorUsuario((String)session.getAttribute("usuario"));
-		session.setAttribute("misAnuncios", aux);
+		session.setAttribute("misrecetas", aux);
 		
-		return "misanuncios";
+		return "misRecetas";
 	}
 
 	

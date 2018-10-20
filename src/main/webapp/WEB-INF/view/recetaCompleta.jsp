@@ -52,7 +52,7 @@
 					</p>
 
 					<div class="btn-group" role="group" aria-label="">
-								<a class="" style="margin-right: 10%;" href="#"><button	type="button" class="btn btn-warning btn-lg">★ FAVORITO</button></a> 
+								<a class="" style="margin-right: 10%;" href="#"><button	type="button" class="btn btn-warning btn-lg">❤ FAVORITO</button></a> 
 								<a class="" href="#"><button type="button"	class="btn btn-warning btn-lg">✉ COMPARTIR</button></a>
 							</div>
 							<hr class="my-4">							
