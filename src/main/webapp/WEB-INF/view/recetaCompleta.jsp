@@ -41,8 +41,8 @@
 					</p>
 
 					<div class="btn-group" role="group" aria-label="">
-								<a class="" style="margin-right: 10%;" href="#"><button	type="button" class="btn btn-warning btn-lg">❤ FAVORITO</button></a> 
-								<a class="" href="#"><button type="button"	class="btn btn-warning btn-lg">✉ COMPARTIR</button></a>
+								<a class="" style="margin-right: 10%;" href="/favorita?id_receta=${receta.id}"><button	type="button" class="btn btn-warning btn-lg">❤ FAVORITO</button></a> 
+								<a class="" href="mailto:?Subject=${receta.titulo}%20en%20La%20Receta%20de%20la%20Abuela&amp;body=Mira%20que%20receta%20mas%20chula%20que%20he%20encontrado%20en%20esta%20magnífica%20web%20que%20han%20creado%203%20chavales."><button type="button"	class="btn btn-warning btn-lg">✉ COMPARTIR</button></a>
 							</div>
 							<hr class="my-4">							
 				</div>

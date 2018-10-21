@@ -23,6 +23,18 @@
 		
 		<div class="container-fluid" style="padding-left: 5%;">
 			<div class="row">
+			
+			<% 
+			
+				if (session.getAttribute("misrecetas") == null) {
+					%>
+					<p><div style="align-content: center;"> <h2>No tienes ninguna receta subida</h2>
+					<p><h4>Prueba a subir tu primera receta <a href="añadirReceta">aquí</a></h4>
+					</div>
+					<%
+				} else {
+			%>
+			
 				<c:forEach var="r" items="${misrecetas}">
 					<div class="col-md-4" style="height: 100%;">
 						<div class="jumbotron" style="padding-bottom: 5%; padding-top: 5%">
@@ -46,6 +58,9 @@
 						</div>
 					</div>
 				</c:forEach>
+				<%
+				}
+				%>
 			</div>
 		</div>
 		

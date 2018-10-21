@@ -23,6 +23,18 @@
 		
 		<div class="container-fluid" style="padding-left: 5%;">
 			<div class="row">
+			
+			<% 
+			
+				if (session.getAttribute("misrecetas") == null) {
+					%>
+					<p><div style="align-content: center;"> <h2>No tienes ninguna receta marcada como favorita</h2>
+					<p><h4>Mira las recetas <a href="recetas">aquí</a> y pincha en el ❤ de las que más te gusten.</h4>
+					</div>
+					<%
+				} else {
+			%>
+			
 				<c:forEach var="r" items="${recetasFavoritas}">
 					<div class="col-md-4" style="height: 100%;">
 						<div class="jumbotron" style="padding-bottom: 5%; padding-top: 5%">
@@ -32,7 +44,7 @@
 								width="370" src="${r.tablaRecetas.imagen}"></a>
 							<hr class="my-4">
 							<div class="btn-group" role="group" aria-label="">
-								<a class="" style="margin-right: 20%;" href="/actualizarReceta?id_receta=${r.tablaRecetas.id}"><button
+								<a class="" style="margin-right: 20%;" href="/quitarFavorito?id_receta=${r.id}"><button
 										type="button" class="btn btn-warning btn-lg">💔</button></a> <a
 									class="" style="margin-right: 20%;"
 									href="/receta?id_receta=${r.tablaRecetas.id}"><button type="button"
@@ -42,6 +54,9 @@
 						</div>
 					</div>
 				</c:forEach>
+				<%
+				}
+				%>
 			</div>
 		</div>
 		

@@ -19,11 +19,11 @@
           <li><a  href="/login">Login</a></li>
           <%}else {
           %>
-           <li class="menu-has-children"><a href=""><%=u.getUsuario() %></a>
+           <li class="menu-has-children"><a href="perfil"><%=u.getUsuario() %></a>
             <ul>
+              <li><a href="/perfil">Mi Perfil</a></li>            
               <li><a href="/misRecetas">Mis recetas</a></li>
-              <li><a href="/perfil">Perfil</a></li>
-              <li><a href="/cerrarSesion">Cerrar sesion</a></li>
+              <li><a href="/cerrarSesion">Cerrar sesión</a></li>
             </ul>
           </li>
           <%} %>

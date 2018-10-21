@@ -211,7 +211,7 @@ public class Controlador {
 		System.out.println("entra en misRecetas");
 		Usuario u = (Usuario) session.getAttribute("usuario");
 		List<Receta> recetasUsuario = recetaService.listarPorUsuario(u.getId());
-		req.setAttribute("misrecetas", recetasUsuario);
+		session.setAttribute("misrecetas", recetasUsuario);
 		System.err.println(recetasUsuario);
 		session.getAttribute("listarCategorias");
 		
@@ -237,6 +237,20 @@ public class Controlador {
 		
 		return recetasFavoritas(req);
 	}
+	
+	@RequestMapping("/quitarFavorito")
+	public String quitarFavorito(HttpServletRequest req) {
+		 session = req.getSession(true);
+		int id_receta = Integer.parseInt(req.getParameter("id_receta"));
+
+		RecetaFavorita borrar = recetasFavoritasService.buscarReceta(id_receta);
+		
+		recetasFavoritasService.borrarRecetaFavorita(id_receta);
+		
+		
+		return recetasFavoritas(req);
+	}
+
 	
 	@RequestMapping("/recetasFavoritas")
 	public String recetasFavoritas(HttpServletRequest req) {

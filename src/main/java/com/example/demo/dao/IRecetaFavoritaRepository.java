@@ -17,4 +17,6 @@ public interface IRecetaFavoritaRepository extends CrudRepository<RecetaFavorita
 	@Query(value="SELECT*FROM favoritas WHERE RECETA_ID = :receta_id", nativeQuery = true)
 	public Optional <List<RecetaFavorita>> findByReceta(@Param("receta_id") int receta_id);
 	
+	@Query(value="DELETE FROM favoritas WHERE receta_id = :receta_id;", nativeQuery = true)
+	public  void deleteRecetaFavorita(@Param("receta_id")int receta_id);
 }

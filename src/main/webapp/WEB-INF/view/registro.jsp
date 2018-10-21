@@ -25,11 +25,11 @@
 							<div class="form-label-group">
 								<input type="password" id="inputPassword" name="password" class="form-control"
 									placeholder="Password" required> <label
-									for="inputPassword">Password</label>
+									for="inputPassword">Contraseña</label>
 							</div>
 
 							<button class="btn btn-lg btn-primary btn-block text-uppercase"
-								type="submit">Sign Up</button>
+								type="submit">Regístrate</button>
 
 							<hr class="my-4">
 							<p>${mensaje}</p>
