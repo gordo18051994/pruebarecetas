@@ -86,4 +86,15 @@ public class RecetaSERVICE implements IRecetaService {
 		return null;
 	}
 
+	@Override
+	public List<Receta> filtrado(int categoria_id, String titulo, String ingrediente) {
+		Optional<List<Receta>> recetasFiltradas = recetaRepository.filtroBusqueda(categoria_id, titulo, ingrediente);
+		if(recetasFiltradas.isPresent()) {
+			return recetasFiltradas.get();
+		} else {
+			return null;
+		}
+		
+	}
+
 }

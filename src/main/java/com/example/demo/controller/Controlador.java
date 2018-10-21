@@ -143,6 +143,8 @@ public class Controlador {
 //		List<Receta> listaRecetas = recetaService.listarPorCategoria(Integer.parseInt(req.getParameter("id_categoria")));
 //		
 //		req.setAttribute("listarRecetas", listaRecetas);
+		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
+		req.setAttribute("listarIngredientes", ingredientes);
 		session.setAttribute("listarCategorias", categoriaService.listarCategorias());
 		return "recetas";
 	}
@@ -156,6 +158,7 @@ public class Controlador {
 
 		List<Receta> listaRecetas = recetaService.listarPorCategoria(id_categoria); 
 		session.setAttribute("listarRecetas", listaRecetas);
+
 		
 		return "recetas";
 	}
@@ -172,7 +175,7 @@ public class Controlador {
 		
 		req.setAttribute("receta", receta);
 		req.setAttribute("recetaCompleta", pepe);
-	
+
 		
 		
 		List<Receta> listaRecetas = recetaService.listar();
@@ -230,6 +233,7 @@ public class Controlador {
 		recetaFavorita.setTablaRecetas(receta);
 		recetaFavorita.setTablaUsuarios(u);
 		recetasFavoritasService.addReceta(recetaFavorita);
+
 		
 		List<RecetaFavorita> recetasFav = recetasFavoritasService.listarPorUsuario(u.getId());
 		
@@ -393,6 +397,23 @@ public class Controlador {
 		session.setAttribute("misrecetas", aux);
 		
 		return "misRecetas";
+	}
+	
+	@RequestMapping("/filtroBusqueda")
+	public String filtroBusqueda(HttpServletRequest req) {
+		session = req.getSession(true);
+		System.err.println("entra en filtroBusqueda");
+		String titulo = req.getParameter("titulo");
+		int categoria = Integer.parseInt(req.getParameter("idcategoria"));
+		String ingrediente = req.getParameter("ingrediente");
+		
+		List<Receta> aux = recetaService.filtrado(categoria, titulo, ingrediente);
+		for (Receta receta : aux) {
+			System.out.println(receta.getTitulo());
+		}
+		session.setAttribute("listarRecetas", aux);
+		
+		return "recetas";
 	}
 
 	

@@ -38,15 +38,16 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 		RecetaFavorita r = null;
 		List<RecetaFavorita> lista = listarPorUsuario(receta.getTablaUsuarios().getId());
 		
+		if(lista.isEmpty()) {
 			recetaFavoritaRepository.save(r);
-	
-			for (RecetaFavorita recetaFavorita : lista) {
-				if(receta.getTablaRecetas().getId() == recetaFavorita.getTablaRecetas().getId()) {
-					r = null;
-					break;
-				}else{					
-					r =  receta;
-				}
+		} else {
+		
+		for (RecetaFavorita recetaFavorita : lista) {
+			if(receta.getTablaRecetas().getId() == recetaFavorita.getTablaRecetas().getId()) {
+				r = null;
+				break;
+			}else{					
+				r =  receta;
 			}
 			if(r != null) {
 				recetaFavoritaRepository.save(r);
@@ -68,6 +69,7 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 		}
 		return aux;	
 	}
+		}
 }
 	
 

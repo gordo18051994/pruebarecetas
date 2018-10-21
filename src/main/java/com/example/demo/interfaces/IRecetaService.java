@@ -14,5 +14,6 @@ public interface IRecetaService {
 	public void actualizarReceta(Receta receta);
 	public Receta buscarReceta(int receta_id);
 	public List<Receta> listarPorUsuario(String attribute);
+	public List<Receta> filtrado(int categoria_id, String titulo, String ingrediente);
 
 }
