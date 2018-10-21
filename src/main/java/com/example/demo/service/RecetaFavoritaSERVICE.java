@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.IRecetaFavoritaRepository;
 import com.example.demo.interfaces.IRecetaFavoritaService;
+import com.example.demo.model.Receta;
 import com.example.demo.model.RecetaFavorita;
 
 @Service
@@ -31,4 +32,30 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 		recetaFavoritaRepository.deleteById(id);
 	}
 
+	@Override
+	public RecetaFavorita addReceta(RecetaFavorita receta) {
+		
+		RecetaFavorita r = new RecetaFavorita();
+		List<RecetaFavorita> lista = listarPorUsuario(receta.getTablaUsuarios().getId());
+		
+		for (RecetaFavorita recetaFavorita : lista) {
+			System.err.println(recetaFavorita.getTablaRecetas().getId());
+			System.err.println(recetaFavorita.getTablaUsuarios().getUsuario());
+		}
+		
+		for (RecetaFavorita recetaFavorita : lista) {
+			if(receta.getTablaRecetas().getId() == recetaFavorita.getTablaRecetas().getId()) {
+					r = null;	
+				
+			}else{					
+			r = recetaFavoritaRepository.save(receta);	
+			}
+		}
+		return r;
+	}
 }
+	
+
+	
+
+

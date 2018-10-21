@@ -56,7 +56,7 @@ public class Controlador {
 	private IIngredienteRecetaService  ingRecetaService;
 	
 	@Autowired
-	private IRecetaFavoritaService recetasFavoritas;
+	private IRecetaFavoritaService recetasFavoritasService;
 	
 	@Autowired
 	private IIngredienteService ingredienteService;
@@ -218,14 +218,35 @@ public class Controlador {
 		return "misRecetas";
 	}
 	
-	@RequestMapping("/recetaFavoritas")
-	public @ResponseBody List<RecetaFavorita> recetaFavoritas(HttpServletRequest req) {
+	@RequestMapping("/favorita")
+	public String favorita(HttpServletRequest req) {
+		 session = req.getSession(true);
+		System.out.println("entra en añadir una receta a favorita");
+		Usuario u = (Usuario) session.getAttribute("usuario");
+		int receta_id = Integer.parseInt(req.getParameter("id_receta"));
+		Receta receta = recetaService.buscarReceta(receta_id);
+		
+		RecetaFavorita recetaFavorita = new RecetaFavorita();
+		recetaFavorita.setTablaRecetas(receta);
+		recetaFavorita.setTablaUsuarios(u);
+		recetasFavoritasService.addReceta(recetaFavorita);
+		
+		List<RecetaFavorita> recetasFav = recetasFavoritasService.listarPorUsuario(u.getId());
+		
+		session.setAttribute("recetasFavoritas", recetasFav);
+		
+		return recetasFavoritas(req);
+	}
+	
+	@RequestMapping("/recetasFavoritas")
+	public String recetasFavoritas(HttpServletRequest req) {
 		 session = req.getSession(true);
 		System.out.println("entra en recetaFavoritas");
 		Usuario u = (Usuario) session.getAttribute("usuario");
-		List<RecetaFavorita> recetas =  recetasFavoritas.listarPorUsuario(u.getId());
+		List<RecetaFavorita> recetasFavoritas =  recetasFavoritasService.listarPorUsuario(u.getId());
+		session.setAttribute("recetasFavoritas", recetasFavoritas);
 		
-		return recetas;
+		return "recetasFavoritas";
 	}
 	
 	@RequestMapping("/cerrarSesion")

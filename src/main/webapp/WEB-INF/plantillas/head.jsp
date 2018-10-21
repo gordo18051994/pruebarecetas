@@ -14,7 +14,8 @@
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <script src="js/header.js"></script>
 <script src="js/ajax.js"></script>
-<title>Insert title here</title>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
 </head>
 <body>
 

@@ -25,10 +25,19 @@
 								<input type="hidden" value="${r.tablaCategoria.nombre }">
 								<input type="hidden" value="${r.tablaUsuario.usuario }">
 							<hr class="my-4">
+									
 							<div class="btn-group" role="group" aria-label="">
-								<a class="" style="margin-right: 10%;" href="#"><button
-										type="button" class="btn btn-warning btn-lg">❤</button></a> <a
-									class="" style="margin-right: 10%;"
+							<!-- SI EL USUARIO NO ESTA LOGUEADO EL BOTON FAVORITO APARECE DESACTIVADO -->
+							<% u = (Usuario) session.getAttribute("usuario");%>
+							<% if(u == null) { %>
+								<a class="" style="margin-right: 10%;" href="/favorita?id_receta=${r.id}"><button
+										type="button" class="btn btn-warning btn-lg" disabled >❤</button></a> 
+							<%}else { %>			
+							<!-- SI EL USUARIO HA INICIADO SESION EL BOTON FAVORITO SE PUEDE USAR-->
+							<a class="" style="margin-right: 10%;" href="/favorita?id_receta=${r.id}"><button
+										type="button" class="btn btn-warning btn-lg" >❤</button></a> 
+							<%} %>										
+										<a class="" style="margin-right: 10%;"
 									href="/receta?id_receta=${r.id}"><button type="button"
 										class="btn btn-warning btn-lg">RECETA COMPLETA</button></a> <a
 									class="" href="#"><button type="button"

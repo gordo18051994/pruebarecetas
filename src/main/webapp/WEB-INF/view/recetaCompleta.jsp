@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<head>
+<title>Receta de ${receta.titulo} | La Receta de la Abuela</title>
 <%@ include file="../plantillas/head.jsp"%>
+</head>
 
 <body>
 	<%@ include file="../plantillas/header.jsp"%>
@@ -45,7 +48,7 @@
 				</div>
 				<div class="col-md-4">
 					<h2>
-						Ingredientes
+						Ingredientes (4 personas)
 					</h2>
 					<hr class="my-4">
 					<c:forEach var="c" items="${recetaCompleta}">
