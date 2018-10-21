@@ -10,12 +10,12 @@
 	<div class="container" style="margin-top: 20px;">
 		<div class="jumbotron jumbotron-fluid, img-rounded"
 			style="border-radius: 22px; height: 750px; background: #4caf50">
-			<form action="addReceta1" method="post">
+			<form action="añadirRecetaBBDD" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Elige la categoría:</label> <select class="form-control"
 						name="idcategoria" required>
 						<c:forEach var="c" items="${listarCategorias }">
-							<option name="idcategoria" value="${c.id }">${c.nombre }</option>
+							<option  value="${c.id }">${c.nombre }</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -25,7 +25,7 @@
 				</div>
 
 				<div class="form-group">
-					<label>Escrite la receta:</label>
+					<label>Escribe la descripcion de la receta:</label>
 					<textarea name="descripcion" class="form-control"
 						placeholder="receta" required></textarea>
 				</div>
@@ -37,7 +37,7 @@
 						<ul class="list-group">
 							<li class="list-group-item row d-flex">
 								<div class="col-2">
-									<input type="checkbox" value="${i.id }">${i.nombre }</div>
+									<input type="checkbox" name="ingredientes" value="${i.id }">${i.nombre }</div>
 									 <label>Cantidad:</label>
 								<div class="col-4">
 									<input type="text" placeholder="000" name="cantidad"
@@ -56,13 +56,12 @@
 					</c:forEach>
 				</div>
 
-
-
-
 				<div class="form-group">
 					<label>Añade una foto una foto:</label> <input type="file"
-						name="foto" class="form-control" required>
+						name="file" class="form-control" >
 				</div>
+				<button type="submit" class="btn btn-warning btn-lg" style="margin-left: 39%; margin-top: 1.5%; padding: 2.5%; font-size: 30px; border-radius: 50px;">
+					Añadir receta</button>
 			</form>
 		</div>
 	</div>

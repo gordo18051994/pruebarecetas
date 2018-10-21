@@ -29,9 +29,9 @@ public class IngredienteRecetaSERVICE implements IIngredienteRecetaService {
 	}
 
 	@Override
-	public IngredienteReceta listarRecetas() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<IngredienteReceta> listarRecetas() {
+		List<IngredienteReceta> ir = (List<IngredienteReceta>) ingredienteRecetaRepository.findAll();
+		return ir;
 	}
 
 	@Override
@@ -43,6 +43,11 @@ public class IngredienteRecetaSERVICE implements IIngredienteRecetaService {
 	@Override
 	public void insertarReceta(IngredienteReceta a) {
 		ingredienteRecetaRepository.save(a);
+	}
+
+	@Override
+	public void borrarReceta(IngredienteReceta a) {
+		ingredienteRecetaRepository.delete(a);
 	}
 
 }

@@ -1,7 +1,7 @@
 
 
-<footer class="section footer-classic context-white bg-image" style="background: #ffffff; text-align: center;">
-        <div class="container">
+<footer class="section footer-classic bg-image" style="background: #5CB85E; text-align: center; margin-top: 10%;">
+        <div class="container" style=" font-size: 25px; padding-top: 15px;">
           <div class="row row-30">
             <div class="col-md-4 col-xl-5">
               <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
@@ -37,10 +37,10 @@
           </div>
         </div>
         <p>
-        <div class="row no-gutters social-container">
-          <div class="col"><a class="social-inner" href="https://es-es.facebook.com/"><span class="icon mdi mdi-facebook" ></span><span>Facebook</span></a></div>
-          <div class="col"><a class="social-inner" href="https://www.instagram.com/?hl=es"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
-          <div class="col"><a class="social-inner" href="https://twitter.com/?lang=es"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
-          <div class="col"><a class="social-inner" href="https://www.google.es/"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
+        <div class="row no-gutters social-container" style="font-size: 30px;">
+          <div class="col"><a class="social-inner" href="https://es-es.facebook.com/"><span class="icon mdi mdi-spin mdi-48px mdi-facebook" ></span><span>Facebook</span></a></div>
+          <div class="col"><a class="social-inner" href="https://www.instagram.com/?hl=es"><span class="icon mdi mdi-48px mdi-instagram"></span><span>instagram</span></a></div>
+          <div class="col"><a class="social-inner" href="https://twitter.com/?lang=es"><span class="icon mdi mdi-spin mdi-48px mdi-twitter"></span><span>twitter</span></a></div>
+          <div class="col"><a class="social-inner" href="https://www.google.es/"><span class="icon mdi mdi-48px mdi-google"></span><span>google</span></a></div>
         </div>
       </footer>

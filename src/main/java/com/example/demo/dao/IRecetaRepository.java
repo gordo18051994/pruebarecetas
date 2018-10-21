@@ -17,5 +17,6 @@ public interface IRecetaRepository extends CrudRepository<Receta, Integer> {
 	@Query (value="SELECT*FROM recetas WHERE USUARIO_ID = :usuario_id", nativeQuery = true)
 	public Optional<List<Receta>> findByUsuario (@Param("usuario_id") int usuario_id);
 	
-
+	@Query(value="DELETE FROM recetas WHERE id = :id;", nativeQuery = true)
+	public  void deleteReceta(@Param("id")int id);
 }

@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,12 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.SortingFocusTraversalPolicy;
 
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.interfaces.ICategoriaService;
@@ -59,6 +69,8 @@ public class Controlador {
 	@RequestMapping("/")
 	public ModelAndView inicio(HttpServletRequest req) {
 		ModelAndView m = new ModelAndView();
+		session = req.getSession(true);
+		session.setAttribute("listarCategorias", categoriaService.listarCategorias());
 		m.setViewName("index");
 		return m;
 	}
@@ -108,15 +120,6 @@ public class Controlador {
 		return inicio(req);
 	}
 	
-
-	@RequestMapping("/categorias")
-	public String categorias (HttpServletRequest req) {
-		session = req.getSession(true);
-		System.out.println("entra en categorias");
-		session.setAttribute("listarCategorias", categoriaService.listarCategorias());
-		
-		return "categorias";
-	}
 	@RequestMapping("/categoriasAjax")
 	public @ResponseBody List<Categoria> categoriasAjax (HttpServletRequest req) {
 		session = req.getSession(true);
@@ -252,42 +255,67 @@ public class Controlador {
 	}
 	
 	@RequestMapping("/añadirRecetaBBDD")
-	public String añadirRecetaBBDD(HttpServletRequest req) {
+	public String añadirRecetaBBDD(@RequestParam("file") MultipartFile file, HttpServletRequest req) throws IOException {
 		System.out.println("entra en add receta");
 		HttpSession session = req.getSession(true);
+		
+		String nombre = file.getOriginalFilename();
+        String tipo   = file.getContentType();
+        Long tamano   = file.getSize();
+        byte[] pixel  = file.getBytes();
+        File foto = new File("C:\\Fernando\\workspacenuevo\\pruebarecetas\\src\\main\\webapp\\images\\" + nombre);
+        FileOutputStream os = null;
+        os = new FileOutputStream(foto);
+        os.write(pixel);
+
+		
 		Usuario u = (Usuario) session.getAttribute("usuario");
-		int categoria = Integer.parseInt(req.getParameter("categoria"));
+		int categoria = Integer.parseInt(req.getParameter("idcategoria"));
 		String titulo = req.getParameter("titulo");
 		String descripcion = req.getParameter("descripcion");
 		String[] ingredientes = req.getParameterValues("ingredientes");
 		for (String string : ingredientes) {
 			System.out.println(string);
 		}
-		//String[] cantidad = req.getParameterValues("cantidad");
-		//int medida = Integer.parseInt(req.getParameter("medida"));
+		String[] cantidad = req.getParameterValues("cantidad");
+		String[] medida = req.getParameterValues("idMedida");
+		ArrayList<Float> cantidadParseada = new ArrayList<Float>();
+		ArrayList<Integer> medidaParseada = new ArrayList<Integer>();
+		for (String f : cantidad) {
+			if(!f.equals("")) {
+				cantidadParseada.add(Float.parseFloat(f));
+			}
+		}
+		
+		for (String f : medida) {
+			if(!f.equals("")) {
+				medidaParseada.add(Integer.parseInt(f));
+			}
+		}
 		Receta rec = new Receta();
 		rec.setCategoria_id(categoria);
 		rec.setDescripcion(descripcion);
 		rec.setTitulo(titulo);
 		rec.setUsuario_id(u.getId());
+		rec.setImagen("images/" + foto.getName());
 		Receta recetaInsertada = recetaService.addReceta(rec);
 		System.out.println("Receta insertada");
-		Medida m = new Medida();
-		m.setId(1);
-		m.setNombre("kilos");
-		for (String s : ingredientes) {
-			Ingrediente aux = ingredienteService.buscarIngrediente(Integer.parseInt(s));
+		
+		for(int i = 0; i < ingredientes.length; i++) {
+			Ingrediente aux = ingredienteService.buscarIngrediente(Integer.parseInt(ingredientes[i]));
 			System.out.println(aux.getNombre());
 			System.out.println(aux.getId());
 			IngredienteReceta ingredientesInsertados = new IngredienteReceta();
 			ingredientesInsertados.setTablaIngredientes(aux);
+			Medida m = new Medida();
+			m.setId(medidaParseada.get(i));
 			ingredientesInsertados.setTablaMedidas(m);
-			ingredientesInsertados.setCantidad_ingrediente(Float.parseFloat("200"));
+			ingredientesInsertados.setCantidad_ingrediente(cantidadParseada.get(i));
 			ingredientesInsertados.setTablaRecetas(rec);
 			ingRecetaService.insertarReceta(ingredientesInsertados);
 		}
 		System.out.println("insertado de puta madre");
-		return "addReceta";
+		return misRecetas(req);
 	}
 	
 	
@@ -296,10 +324,27 @@ public class Controlador {
 		return"perfil";
 	}
 	
+	@RequestMapping("pruebaAñadir")
+	public String pruebaAñadir(HttpServletRequest req) {
+		return"pruebaAñadir";
+	}
+	
+	
 	@RequestMapping("/borrarReceta")
 	public String borrarReceta(HttpServletRequest req) {
 		System.err.println("entra en borrar receta");
-		recetaService.borrarReceta(Integer.parseInt(req.getParameter("id_receta")));
+		int id_receta = Integer.parseInt(req.getParameter("id_receta"));
+		System.out.println(id_receta);
+//		List<IngredienteReceta> lista = (List<IngredienteReceta>) ingRecetaService.listarRecetas();
+//		for (IngredienteReceta ingredienteReceta : lista) {
+//			if(ingredienteReceta.getTablaRecetas().getId() == id_receta) {
+//				ingRecetaService.borrarReceta(ingredienteReceta);
+//			}
+//		}
+		Receta borrar = recetaService.buscarReceta(id_receta);
+		System.out.println(borrar.getId());
+		recetaService.borrarReceta(id_receta);
+		
 		return deleteReceta(req);
 
 	}

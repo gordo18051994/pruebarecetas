@@ -6,8 +6,6 @@ var init = function() {
 		}
 	})
 		
-		
-	
 }
 
 $().ready(init); 

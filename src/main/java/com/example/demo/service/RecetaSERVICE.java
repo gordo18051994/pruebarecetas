@@ -48,8 +48,8 @@ public class RecetaSERVICE implements IRecetaService {
 	}
 
 	@Override
-	public void borrarReceta(int receta_id) {
-		recetaRepository.deleteById(receta_id);
+	public void borrarReceta(int id_receta) {
+		recetaRepository.deleteById(id_receta);
 	}
 
 	@Override

@@ -25,12 +25,12 @@ public class IngredienteReceta implements Serializable {
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="receta_id")
+	@JoinColumn(name="receta_id", updatable=false)
 	private Receta tablaRecetas;
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="ingrediente_id", insertable=true, updatable=true)
+	@JoinColumn(name="ingrediente_id", insertable=true, updatable=false)
 	private Ingrediente tablaIngredientes;
 	
 	@Column(name="cantidad_ingrediente")
@@ -38,7 +38,7 @@ public class IngredienteReceta implements Serializable {
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="medida_ingrediente_id", insertable=true, updatable=true)
+	@JoinColumn(name="medida_ingrediente_id", insertable=true, updatable=false)
 	private Medida tablaMedidas;
 	
 	public int getId() {

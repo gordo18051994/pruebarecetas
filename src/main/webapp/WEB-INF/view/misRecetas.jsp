@@ -13,7 +13,7 @@
 			<ul style="list-style: none;">
 				
 					<li style="text-align: left; padding: 5%; text-decoration: none;"><h3>
-							<p><a class="categoria" href="">Mis Recetas</a>
+							<p><a class="categoria" href="/misRecetas">Mis Recetas</a>
 							<p><a class="categoria" href="/añadirReceta">Añadir Receta</a>
 							<p><a class="categoria" href="">Recetas Favoritas</a>
 							</h3></li>

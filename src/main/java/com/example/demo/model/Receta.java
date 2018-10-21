@@ -29,7 +29,7 @@ public class Receta implements Serializable {
 	private int id;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="id")
+	@JoinColumn(name="id",  updatable=false)
 	private List<Receta> recetas = new ArrayList<Receta>();
 
 	
