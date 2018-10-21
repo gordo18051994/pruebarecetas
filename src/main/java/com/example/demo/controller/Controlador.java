@@ -284,7 +284,7 @@ public class Controlador {
         String tipo   = file.getContentType();
         Long tamano   = file.getSize();
         byte[] pixel  = file.getBytes();
-        File foto = new File("C:\\Fernando\\workspacenuevo\\pruebarecetas\\src\\main\\webapp\\images\\" + nombre);
+        File foto = new File("src\\main\\webapp\\images\\" + nombre);
         FileOutputStream os = null;
         os = new FileOutputStream(foto);
         os.write(pixel);

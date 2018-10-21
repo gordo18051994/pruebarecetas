@@ -9,7 +9,7 @@ public interface IRecetaFavoritaService {
 	
 	public List<RecetaFavorita> listarPorUsuario(int id);
 	public void borrarRecetaFavorita(int usuario_id);
-	public RecetaFavorita addReceta(RecetaFavorita receta);
+	public void addReceta(RecetaFavorita receta);
 
 
 }

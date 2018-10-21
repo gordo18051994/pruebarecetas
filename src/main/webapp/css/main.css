@@ -13,6 +13,14 @@ height: auto;
 	color:red;
 }	
 
+footer a {
+	text-decoration: none !important;
+	color: navy;
+}
+footer a span {
+		text-decoration: none !important;
+}
+
 .categoria:hover {
 	text-decoration: none;
 	color:red;

@@ -19,7 +19,7 @@
   	</div>
   	<a href="/añadirReceta" ><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 130px; color: black;" value="Añadir Recetas"></a>
   	<a href="/misRecetas"><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 200px; color: black;" value="Mis Recetas"></a>
-  	<a href="/recetaFavoritas"><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 220px; color: black;" value="Recetas Favoritas"></a>
+  	<a href="/recetasFavoritas"><input type="button" class="btn btn-success" style="margin-top: 30px; margin-left: 220px; color: black;" value="Recetas Favoritas"></a>
   	</div>
 </div>
 

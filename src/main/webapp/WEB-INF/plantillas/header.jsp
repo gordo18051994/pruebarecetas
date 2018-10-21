@@ -23,7 +23,6 @@
             <ul>
               <li><a href="/misRecetas">Mis recetas</a></li>
               <li><a href="/perfil">Perfil</a></li>
-              <li><a href="#">Subir anuncios</a></li>
               <li><a href="/cerrarSesion">Cerrar sesion</a></li>
             </ul>
           </li>

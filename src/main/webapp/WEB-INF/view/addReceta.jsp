@@ -9,7 +9,7 @@
 	<h4 style="text-align: center; margin-top: 100px;">AÑADIR RECETA</h4>
 	<div class="container" style="margin-top: 20px;">
 		<div class="jumbotron jumbotron-fluid, img-rounded"
-			style="border-radius: 22px; height: 750px; background: #4caf50">
+			style="border-radius: 22px; height: 30%; background: #4caf50">
 			<form action="añadirRecetaBBDD" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Elige la categoría:</label> <select class="form-control"
@@ -32,7 +32,7 @@
 				<label>Elige los ingredientes: </label>
 
 				<div class="scrollspy" data-spy="scroll" data-offset="0"
-					style="background: #ffffff; height: 150px; overflow-y: scroll;">
+					style="background: #ffffff; height: 300px; overflow-y: scroll;">
 					<c:forEach var="i" items="${listarIngredientes }">
 						<ul class="list-group">
 							<li class="list-group-item row d-flex">
@@ -43,7 +43,7 @@
 									<input type="text" placeholder="000" name="cantidad"
 										style="width: 40px;">
 								</div>
-								<div class="col-5">
+								<div class="col-2">
 								 <label>Tipo:</label>
 								  <select type="form-control" name="idMedida" required>
 									<c:forEach var="m" items="${listarMedidas }">

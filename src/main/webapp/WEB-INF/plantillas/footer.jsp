@@ -18,11 +18,11 @@
               </dl>
               <dl class="contact-list">
                 <dt>email:</dt>
-                <dd><a href="mailto:#">lalibretadelaabuela@gmail.com</a></dd>
+                <dd>lalibretadelaabuela@gmail.com</dd>
               </dl>
               <dl class="contact-list">
                 <dt>Telefono: </dt>
-                <dd><a href="tel:#">123456789</a>
+                <dd>123456789
                 </dd>
               </dl>
             </div>
@@ -30,7 +30,7 @@
               <h5>Links</h5>
               <ul class="nav-list">
                 <li><a href="/">Inicio</a></li>
-                <li><a href="/categorias">Categorias</a></li>
+                <li><a href="/recetas">Recetas</a></li>
                 <li><a href="/login">Login</a></li>
               </ul>
             </div>

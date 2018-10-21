@@ -33,25 +33,23 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 	}
 
 	@Override
-	public RecetaFavorita addReceta(RecetaFavorita receta) {
+	public void addReceta(RecetaFavorita receta) {
 		
-		RecetaFavorita r = new RecetaFavorita();
+		RecetaFavorita r = null;
 		List<RecetaFavorita> lista = listarPorUsuario(receta.getTablaUsuarios().getId());
 		
-		for (RecetaFavorita recetaFavorita : lista) {
-			System.err.println(recetaFavorita.getTablaRecetas().getId());
-			System.err.println(recetaFavorita.getTablaUsuarios().getUsuario());
-		}
 		
 		for (RecetaFavorita recetaFavorita : lista) {
 			if(receta.getTablaRecetas().getId() == recetaFavorita.getTablaRecetas().getId()) {
-					r = null;	
-				
+				r = null;
+				break;
 			}else{					
-			r = recetaFavoritaRepository.save(receta);	
+				r =  receta;
 			}
 		}
-		return r;
+		if(r != null) {
+			recetaFavoritaRepository.save(r);
+		}
 	}
 }
 	
