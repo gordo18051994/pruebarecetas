@@ -357,12 +357,6 @@ public class Controlador {
 		return misRecetas(req);
 	}
 	
-	
-	@RequestMapping("addReceta1")
-	public String addReceta1(HttpServletRequest req) {
-		return"perfil";
-	}
-	
 	@RequestMapping("pruebaAñadir")
 	public String pruebaAñadir(HttpServletRequest req) {
 		return"pruebaAñadir";
@@ -374,12 +368,7 @@ public class Controlador {
 		System.err.println("entra en borrar receta");
 		int id_receta = Integer.parseInt(req.getParameter("id_receta"));
 		System.out.println(id_receta);
-//		List<IngredienteReceta> lista = (List<IngredienteReceta>) ingRecetaService.listarRecetas();
-//		for (IngredienteReceta ingredienteReceta : lista) {
-//			if(ingredienteReceta.getTablaRecetas().getId() == id_receta) {
-//				ingRecetaService.borrarReceta(ingredienteReceta);
-//			}
-//		}
+
 		Receta borrar = recetaService.buscarReceta(id_receta);
 		System.out.println(borrar.getId());
 		recetaService.borrarReceta(id_receta);
@@ -414,6 +403,91 @@ public class Controlador {
 		session.setAttribute("listarRecetas", aux);
 		
 		return "recetas";
+	}
+	
+	@RequestMapping("/actualizarReceta")
+	public String actualizarReceta(HttpServletRequest req) {
+	
+		int idReceta = Integer.parseInt(req.getParameter("id_receta"));
+		System.out.println(""+idReceta);
+		Receta r = recetaService.buscarReceta(idReceta);
+		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
+		List<Medida> medidas = medidaService.listarMedidas();
+
+		req.setAttribute("listarMedidas", medidas);
+		req.setAttribute("listarIngredientes", ingredientes);
+		req.setAttribute("receta", r);
+		session.setAttribute("receta", r);
+		
+		return"actualizarreceta";
+	}
+	
+	@RequestMapping("recetaActualizada")
+	public String recetaActualizada(HttpServletRequest req) {
+		
+		System.out.println("entra en add receta");
+		HttpSession session = req.getSession(true);
+		
+		Receta re = (Receta) session.getAttribute("receta");
+		List<IngredienteReceta> irs =  ingRecetaService.listarPorReceta(re.getId());
+		for (IngredienteReceta ir : irs) {
+			System.out.println(""+ir.getTablaIngredientes().getNombre());
+			ingRecetaService.borrarIngrediente(ir);
+			System.out.println("ingrediene "+ ir+ " borrado");
+		}
+		
+		
+		Usuario u = (Usuario) session.getAttribute("usuario");
+		int categoria = Integer.parseInt(req.getParameter("idcategoria"));
+		String titulo = req.getParameter("titulo");
+		String descripcion = req.getParameter("descripcion");
+		String[] ingredientes = req.getParameterValues("ingredientes");
+		for (String string : ingredientes) {
+			System.out.println(string);
+		}
+		String[] cantidad = req.getParameterValues("cantidad");
+		String[] medida = req.getParameterValues("idMedida");
+		ArrayList<Float> cantidadParseada = new ArrayList<Float>();
+		ArrayList<Integer> medidaParseada = new ArrayList<Integer>();
+		for (String f : cantidad) {
+			if(!f.equals("")) {
+				cantidadParseada.add(Float.parseFloat(f));
+			}
+		}
+		
+		for (String f : medida) {
+			if(!f.equals("")) {
+				medidaParseada.add(Integer.parseInt(f));
+			}
+		}
+		
+		System.out.println(""+ re.getCategoria_id()+" "+re.getTitulo());
+		Receta rec = recetaService.buscarReceta(re.getId());
+		rec.setCategoria_id(categoria);
+		rec.setDescripcion(descripcion);
+		rec.setTitulo(titulo);
+		rec.setUsuario_id(u.getId());
+		Receta recetaInsertada = recetaService.addReceta(rec);
+		System.out.println("Receta insertada");
+		
+		
+		for(int i = 0; i < ingredientes.length; i++) {
+			
+			Ingrediente aux = ingredienteService.buscarIngrediente(Integer.parseInt(ingredientes[i]));
+			System.out.println(aux.getNombre());
+			System.out.println(aux.getId());
+			IngredienteReceta ingredientesInsertados = new IngredienteReceta();
+			ingredientesInsertados.setTablaIngredientes(aux);
+			Medida m = new Medida();
+			m.setId(medidaParseada.get(i));
+			ingredientesInsertados.setTablaMedidas(m);
+			ingredientesInsertados.setCantidad_ingrediente(cantidadParseada.get(i));
+			ingredientesInsertados.setTablaRecetas(rec);
+			ingRecetaService.insertarReceta(ingredientesInsertados);
+		}
+		System.out.println("insertado de puta madre");
+		
+		return misRecetas(req);
 	}
 
 	

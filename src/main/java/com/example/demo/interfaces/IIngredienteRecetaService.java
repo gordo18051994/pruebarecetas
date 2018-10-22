@@ -10,6 +10,6 @@ public interface IIngredienteRecetaService {
 	public List<IngredienteReceta> listarRecetas();
 	public IngredienteReceta buscarRecetaCompleta(int receta_id);
 	public void insertarReceta(IngredienteReceta a);
-	public void borrarReceta(IngredienteReceta a);
+	public void borrarIngrediente(IngredienteReceta a);
 
 }
