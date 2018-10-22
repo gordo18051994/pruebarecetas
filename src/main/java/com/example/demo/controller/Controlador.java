@@ -90,13 +90,13 @@ public class Controlador {
 		return m;
 	}
 	@RequestMapping("/registrar")
-	public ModelAndView registrar(HttpServletRequest req) {
+	public @ResponseBody Usuario registrar(HttpServletRequest req) {
 		ModelAndView m = new ModelAndView();
 		String usuario = req.getParameter("usuario");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		Usuario u = new Usuario();
-		String msg="";
+		
 		
 		if (us.buscarUsuario(email)==null) {
 			u.setUsuario(usuario);
@@ -104,12 +104,13 @@ public class Controlador {
 			u.setPassword(password);
 			System.out.println(u.getUsuario());
 			us.addUsuario(u);
+			m.setViewName("index");
 		}else {
-			msg = ("Ya existe este usuario.");
-			System.out.println("Ya existe este usuario");
+			u = null;
+			m.setViewName("registro");
 		}
 		
-		return viewLogin(req);
+		return u;
 	}
 	@RequestMapping("/logear")
 	public @ResponseBody Usuario login(HttpServletRequest req) {
@@ -407,23 +408,6 @@ public class Controlador {
 		return "misRecetas";
 	}
 	
-	@RequestMapping("/filtroBusqueda")
-	public String filtroBusqueda(HttpServletRequest req) {
-		session = req.getSession(true);
-		System.err.println("entra en filtroBusqueda");
-		String titulo = req.getParameter("titulo");
-		int categoria = Integer.parseInt(req.getParameter("idcategoria"));
-		String ingrediente = req.getParameter("ingrediente");
-		
-		List<Receta> aux = recetaService.filtrado(categoria, titulo, ingrediente);
-		for (Receta receta : aux) {
-			System.out.println(receta.getTitulo());
-		}
-		session.setAttribute("listarRecetas", aux);
-		
-		return "recetas";
-	}
-	
 	@RequestMapping("/actualizarReceta")
 	public String actualizarReceta(HttpServletRequest req) {
 	
@@ -530,7 +514,7 @@ public class Controlador {
 		 
 		return "recetas"; 
 	} 
-
+	
 	
 	
 }

@@ -27,13 +27,11 @@
 									placeholder="Password" required> <label
 									for="inputPassword">Contraseña</label>
 							</div>
-
-							<button class="btn btn-lg btn-primary btn-block text-uppercase"
-								type="submit">Regístrate</button>
-
-							<hr class="my-4">
-							<p>${mensaje}</p>
+							<div id="registroIncorrecto"  class="alert alert-danger" style="margin-top: 5%;">Ya existe este usuario.</div>
+							
 						</form>
+						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="" id="btnRegistro">Regístrate</button>
+						<hr class="my-4">
 					</div>
 				</div>
 			</div>

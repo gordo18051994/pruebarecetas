@@ -25,6 +25,24 @@ var init = function() {
 		
 	})
 	
+	$("#registroIncorrecto").hide();
+	$("#btnRegistro").on('click', function(){
+		var usuario=$("#inputUser").val();
+		var email=$("#inputEmail").val();
+		var password=$("#inputPassword").val();
+		$.post('/registrar',{"usuario": usuario, "email": email, "password": password}, function (data){
+			debugger;
+			if (data.usuario == undefined){
+				debugger;
+				$("#registroIncorrecto").show();
+			}else{
+				debugger;
+				location.href="login";
+			}
+		})
+	})
+	
+	
 		
 }
 

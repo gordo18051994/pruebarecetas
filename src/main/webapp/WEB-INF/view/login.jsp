@@ -27,16 +27,10 @@
                <div id="emailIncorrecto"  class="alert alert-danger" style="margin-top: 5%;">Credenciales incorrectas.</div>
                 
               </div>
-
-
-
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btnLogin1" type="">Entrar1</button>
-
-              <a class="btn btn-lg btn-primary btn-block text-uppercase"  href="/registro" type="button">Registrarse</a>
-              <hr class="my-4">
-              
             </form>
-                          <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btnLogin" type="">Entrar</button>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btnLogin" type="">Entrar</button>
+            <a class="btn btn-lg btn-primary btn-block text-uppercase"  href="/registro" type="button">Registrarse</a>
+              <hr class="my-4">
           </div>
         </div>
       </div>
