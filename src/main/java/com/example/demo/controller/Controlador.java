@@ -338,11 +338,11 @@ public class Controlador {
 		}
 		String[] cantidad = req.getParameterValues("cantidad");
 		String[] medida = req.getParameterValues("idMedida");
-		ArrayList<Float> cantidadParseada = new ArrayList<Float>();
+		ArrayList<Integer> cantidadParseada = new ArrayList<Integer>();
 		ArrayList<Integer> medidaParseada = new ArrayList<Integer>();
 		for (String f : cantidad) {
 			if(!f.equals("")) {
-				cantidadParseada.add(Float.parseFloat(f));
+				cantidadParseada.add(Integer.parseInt(f));
 			}
 		}
 		
@@ -377,9 +377,10 @@ public class Controlador {
 		return misRecetas(req);
 	}
 	
-	@RequestMapping("pruebaAñadir")
-	public String pruebaAñadir(HttpServletRequest req) {
-		return"pruebaAñadir";
+	@RequestMapping("buscarIngrediente")
+	public @ResponseBody List<Ingrediente> buscarIngrediente(@RequestParam("nombre") String nombre, HttpServletRequest req) {
+		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
+		return ingredientes;
 	}
 	
 	

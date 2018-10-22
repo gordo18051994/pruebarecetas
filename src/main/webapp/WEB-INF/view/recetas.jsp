@@ -33,6 +33,7 @@
 										<ul class="list-group">
 											<li class="list-group-item row d-flex">
 												<div class="col-2">
+												<input type="text" id="buscadorIngrediente" placeholder="Busque ingrediente">
 													<input type="radio" name="ingrediente" value="${i.id }">${i.nombre }</div>
 											</li>
 										</ul>

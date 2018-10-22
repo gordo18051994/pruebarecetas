@@ -38,9 +38,9 @@
         </div>
         <p>
         <div class="row no-gutters social-container" style="font-size: 30px;">
-          <div class="col"><a class="social-inner" href="https://es-es.facebook.com/"><span class="icon mdi mdi-spin mdi-48px mdi-facebook" ></span><span>Facebook</span></a></div>
-          <div class="col"><a class="social-inner" href="https://www.instagram.com/?hl=es"><span class="icon mdi mdi-48px mdi-instagram"></span><span>instagram</span></a></div>
-          <div class="col"><a class="social-inner" href="https://twitter.com/?lang=es"><span class="icon mdi mdi-spin mdi-48px mdi-twitter"></span><span>twitter</span></a></div>
-          <div class="col"><a class="social-inner" href="https://www.google.es/"><span class="icon mdi mdi-48px mdi-google"></span><span>google</span></a></div>
+          <div class="col"><a class="social-inner" href="https://es-es.facebook.com/" id="facebookSpan"><span id="facebook" class="icon mdi mdi-48px mdi-facebook" ></span><span>Facebook</span></a></div>
+          <div class="col"><a class="social-inner" href="https://www.instagram.com/?hl=es" id="instagramSpan"><span id="instagram" class="icon mdi mdi-48px mdi-instagram"></span><span>instagram</span></a></div>
+          <div class="col"><a class="social-inner" href="https://twitter.com/?lang=es" id="twitterSpan"><span id="twitter" class="icon mdi mdi-48px mdi-twitter"></span><span>twitter</span></a></div>
+          <div class="col"><a class="social-inner" href="https://www.google.es/" id="googleSpan"><span id="google" class="icon mdi mdi-48px mdi-google"></span><span>google</span></a></div>
         </div>
       </footer>
