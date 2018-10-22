@@ -46,7 +46,7 @@ public class IngredienteRecetaSERVICE implements IIngredienteRecetaService {
 	}
 
 	@Override
-	public void borrarReceta(IngredienteReceta a) {
+	public void borrarIngrediente(IngredienteReceta a) {
 		ingredienteRecetaRepository.delete(a);
 	}
 
