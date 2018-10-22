@@ -36,7 +36,7 @@
 			%>
 			
 				<c:forEach var="r" items="${recetasFavoritas}">
-					<div class="col-md-4" style="height: 100%;">
+					<div class="col-md-4  shadow-lg p-3 mb-5 bg-white rounded" style="height: 100%;">
 						<div class="jumbotron" style="padding-bottom: 5%; padding-top: 5%">
 							<h3 class="display-6" style="text-align: center; height: 65px;">${r.tablaRecetas.titulo}</h3>
 							<hr class="my-6">

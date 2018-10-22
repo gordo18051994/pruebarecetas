@@ -15,7 +15,7 @@
 				<div class="container-fluid" style="padding-left: 5%;">
 					<form action="/filtroBusqueda">
 						<div class="form-row">
-							<div class="col-3">
+							<div class="col-3 ">
 								<select class="form-control" name="idcategoria" required>
 									<c:forEach var="c" items="${listarCategorias }">
 										<option value="${c.id }">${c.nombre }</option>
@@ -50,7 +50,7 @@
 					<c:forEach var="r" items="${listarRecetas}">
 
 						<div class="col-md-4" style="height: 100%;">
-							<div class="jumbotron"
+							<div class="jumbotron shadow-lg p-3 mb-5 bg-white rounded"
 								style="padding-bottom: 5%; padding-top: 5%">
 								<h3 class="display-6" style="text-align: center; height: 65px;">${r.titulo}</h3>
 								<hr class="my-6">
@@ -70,7 +70,7 @@
 									%>
 									<a class="" style="margin-right: 10%;"
 										href="/favorita?id_receta=${r.id}"><button type="button"
-											class="btn btn-warning btn-lg" disabled>❤</button></a>
+											class="btn btn-warning btn-lg shadow-lg p-3 mb-5 bg-white rounded " disabled>❤</button></a>
 									<%
 										} else {
 									%>
