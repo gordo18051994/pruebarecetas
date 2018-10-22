@@ -34,11 +34,10 @@
 						</div>
 					</div>
 					<h5>
-							Usuario
+							Usuario:      <b>${receta.tablaUsuario.usuario}</b>  
 					</h5>
-					<p>
-							${receta.tablaUsuario.usuario}
-					</p>
+					<br>
+					<br>
 
 					<div class="btn-group" role="group" aria-label="">
 								<a class="" style="margin-right: 10%;" href="/favorita?id_receta=${receta.id}"><button	type="button" class="btn btn-warning btn-lg">❤ FAVORITO</button></a> 
@@ -59,15 +58,25 @@
 									</c:forEach>
 				</div>
 			</div>
+						<br>
+						<br>
 			
 			<h3>
 				Elaboración
 			</h3>
 			<p><h5 class="" style="">
+			
+			
 				${receta.descripcion}
 			</p></h5>
 							<hr class="my-4">			
 			
+			<br>
+			<br>
+			
+			<h4>
+				Otras recetas que te pueden interesar
+			</h4>
 			<div class="row">
 		
 				<c:forEach var="r" items="${recetasRandom}">

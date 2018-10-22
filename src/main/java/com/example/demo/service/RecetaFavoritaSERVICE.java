@@ -52,8 +52,10 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 			if(r != null) {
 				recetaFavoritaRepository.save(r);
 			}
+			}
 			
 		}
+	}
 		
 		
 	
@@ -69,7 +71,7 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 		}
 		return aux;	
 	}
-		}
+		
 }
 	
 
