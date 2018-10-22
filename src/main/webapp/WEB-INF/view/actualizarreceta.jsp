@@ -9,7 +9,7 @@
 	<h4 style="text-align: center; margin-top: 100px;">ACTUALIZAR RECETA</h4>
 	<div class="container" style="margin-top: 20px;">
 		<div class="jumbotron jumbotron-fluid, img-rounded"
-			style="border-radius: 22px; height: 750px; background: #4caf50">
+			style="border-radius: 22px; height: 30%; background: #4caf50">
 			<form action="recetaActualizada" method="post">
 				<div class="form-group">
 					<label>Elige la categoría:</label> <select class="form-control"
@@ -33,7 +33,7 @@
 				<label>Elige los ingredientes: </label>
 
 				<div class="scrollspy" data-spy="scroll" data-offset="0"
-					style="background: #ffffff; height: 150px; overflow-y: scroll;">
+					style="background: #ffffff; height: 300px; overflow-y: scroll;">
 					<c:forEach var="i" items="${listarIngredientes }">
 						<ul class="list-group">
 							<li class="list-group-item row d-flex">
@@ -56,7 +56,7 @@
 						</ul>
 					</c:forEach>
 				</div>
-				<button type="submit" class="btn btn-warning btn-lg" style="margin-left: 39%; margin-top: 1.5%; padding: 2.5%; font-size: 30px; border-radius: 50px;">Añadir Receta</button>
+				<button type="submit" class="btn btn-warning btn-lg" style="margin-left: 39%; margin-top: 1.5%; padding: 2.5%; font-size: 30px; border-radius: 50px;">Actualizar Receta</button>
 
 			</form>
 		</div>

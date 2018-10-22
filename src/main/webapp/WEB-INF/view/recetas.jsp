@@ -28,12 +28,11 @@
 							</div>
 							<div class="col-3">
 								<div class="scrollspy" data-spy="scroll" data-offset="0"
-									style="background: #ffffff; height: 100px; overflow-y: scroll;">
+									style="background: #ffffff; height: 50px; overflow-y: scroll;">
 									<c:forEach var="i" items="${listarIngredientes }">
 										<ul class="list-group">
-											<li class="list-group-item row d-flex">
-												<div class="col-2">
-												<input type="text" id="buscadorIngrediente" placeholder="Busque ingrediente">
+											<li class="list-group-item">
+												<div class="col-12">
 													<input type="radio" name="ingrediente" value="${i.id }">${i.nombre }</div>
 											</li>
 										</ul>
@@ -47,6 +46,7 @@
 					</form>
 
 				</div>
+				
 				<div class="row" style="margin-top: 5%;">
 					<c:forEach var="r" items="${listarRecetas}">
 
@@ -93,11 +93,13 @@
 						</div>
 					</c:forEach>
 				</div>
+				
+				
 			</div>
 		</div>
 	</div>
 
-	</div>
+
 	<%@ include file="../plantillas/footer.jsp"%>
 	<!-- JQuery -->
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
