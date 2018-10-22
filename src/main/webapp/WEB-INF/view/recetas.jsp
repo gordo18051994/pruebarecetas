@@ -85,7 +85,7 @@
 									<a class="" style="margin-right: 10%;"
 										href="/receta?id_receta=${r.id}"><button type="button"
 											class="btn btn-warning btn-lg">RECETA COMPLETA</button></a> <a
-										class="" href="#"><button type="button"
+										class="" href="mailto:?Subject=${r.titulo}%20en%20La%20Receta%20de%20la%20Abuela&amp;body=Mira%20que%20receta%20mas%20chula%20que%20he%20encontrado%20en%20esta%20magnífica%20web%20que%20han%20creado%203%20chavales.""><button type="button"
 											class="btn btn-warning btn-lg">✉</button></a>
 								</div>
 
