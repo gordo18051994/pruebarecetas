@@ -191,10 +191,16 @@ public class Controlador {
 		 Receta receta = recetaService.buscarReceta(receta_id);
 		 System.out.println(receta.getTitulo());
 		 System.out.println(""+receta_id);
-		List<IngredienteReceta> pepe= ingRecetaService.listarPorReceta(receta_id);
+		List<IngredienteReceta> lista= ingRecetaService.listarPorReceta(receta_id);
 		
+		for (IngredienteReceta ingredienteReceta : lista) {
+			System.err.println(ingredienteReceta.getTablaIngredientes().getNombre());
+			System.err.println(ingredienteReceta.getTablaMedidas().getId());
+		}
 		req.setAttribute("receta", receta);
-		req.setAttribute("recetaCompleta", pepe);
+		req.setAttribute("recetaCompleta", lista);
+		
+		
 
 		
 		
