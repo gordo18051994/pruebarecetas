@@ -384,8 +384,8 @@ public class Controlador {
 	}
 	
 	@RequestMapping("buscarIngrediente")
-	public @ResponseBody List<Ingrediente> buscarIngrediente(@RequestParam("nombre") String nombre, HttpServletRequest req) {
-		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
+	public @ResponseBody List<Ingrediente> buscarIngrediente(@RequestParam("ingrediente") String nombre, HttpServletRequest req) {
+		List<Ingrediente> ingredientes = ingredienteService.filtrarIngredientes(nombre);
 		return ingredientes;
 	}
 	

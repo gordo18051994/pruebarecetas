@@ -8,4 +8,6 @@ public interface IIngredienteService {
 	
 	public Ingrediente buscarIngrediente(int id);
 	public List<Ingrediente> listarIngredientes();
+	public List<Ingrediente> filtrarIngredientes(String nombre);
+	
 }

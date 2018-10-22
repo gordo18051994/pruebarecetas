@@ -38,6 +38,16 @@ public class IngredienteSERVICE implements IIngredienteService {
 		}
 		return ingredientes;
 	}
+
+	@Override
+	public List<Ingrediente> filtrarIngredientes(String nombre) {
+			Optional<List<Ingrediente>> lista = ingredienteRepository.findByNombre(nombre);
+			if(lista.isPresent()) {
+				return lista.get();
+			} else {
+				return null;
+			}
+	}
 	
 	
 }
