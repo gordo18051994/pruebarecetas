@@ -13,16 +13,16 @@ import com.example.demo.model.RecetaFavorita;
 
 @Service
 public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
-	
+
 	@Autowired
 	private IRecetaFavoritaRepository recetaFavoritaRepository;
-	
+
 	@Override
 	public List<RecetaFavorita> listarPorUsuario(int usuario_id) {
 		Optional<List<RecetaFavorita>> rf = recetaFavoritaRepository.findByUsuario(usuario_id);
 		if (rf.isPresent()) {
 			return rf.get();
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -51,14 +51,10 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 			}
 			if(r != null) {
 				recetaFavoritaRepository.save(r);
+				}	
 			}
-			}
-			
 		}
 	}
-		
-		
-	
 
 	@Override
 	public RecetaFavorita buscarReceta(int receta_id) {
@@ -66,12 +62,12 @@ public class RecetaFavoritaSERVICE implements IRecetaFavoritaService {
 		Optional<RecetaFavorita> r = recetaFavoritaRepository.findById(receta_id);
 		if (r.isPresent()) {
 			aux = r.get();
-		}else {
+		} else {
 			aux = null;
 		}
-		return aux;	
+		return aux;
 	}
-		
+
 }
 	
 

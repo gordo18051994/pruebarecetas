@@ -6,5 +6,6 @@ public interface IUsuarioService {
 	
 	public Usuario loginUsuario(Usuario u);
 	public Usuario addUsuario(Usuario u);
+	public Usuario buscarUsuario (String email);
 
 }

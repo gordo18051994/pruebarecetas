@@ -44,4 +44,18 @@ public class UsuarioSERVICE implements IUsuarioService {
 		return u;
 	}
 
+	@Override
+	public Usuario buscarUsuario(String email) {
+		Usuario aux = new Usuario();
+		Optional<Usuario> u = usuarioRepository.findByEmail(email);
+		if(u.isPresent()) {
+			aux = u.get();
+		}else {
+			aux = null;
+		}
+		return aux;
+	}
+	
+	
+
 }

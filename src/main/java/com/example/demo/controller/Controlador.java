@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import com.example.demo.interfaces.ICategoriaService;
 import com.example.demo.interfaces.IIngredienteRecetaService;
@@ -95,29 +96,47 @@ public class Controlador {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		Usuario u = new Usuario();
-		u.setUsuario(usuario);
-		u.setEmail(email);
-		u.setPassword(password);
-		System.out.println(u.getUsuario());
-		us.addUsuario(u);
+		String msg="";
+		
+		if (us.buscarUsuario(email)==null) {
+			u.setUsuario(usuario);
+			u.setEmail(email);
+			u.setPassword(password);
+			System.out.println(u.getUsuario());
+			us.addUsuario(u);
+		}else {
+			msg = ("Ya existe este usuario.");
+			System.out.println("Ya existe este usuario");
+		}
 		
 		return viewLogin(req);
 	}
 	@RequestMapping("/logear")
-	public ModelAndView login(HttpServletRequest req) {
+	public @ResponseBody Usuario login(HttpServletRequest req) {
 		session = req.getSession(true);
 		ModelAndView m = new ModelAndView();
-		String usuario = req.getParameter("usuario");
+
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		Usuario u = new Usuario();
-		u.setUsuario(usuario);
-		u.setEmail(email);
-		u.setPassword(password);
-		 Usuario aux = us.loginUsuario(u);
-		session.setAttribute("usuario", aux);
 		
-		return inicio(req);
+		if(us.buscarUsuario(email)==null) {
+			System.out.println("No existe esta cuenta de usuario");
+			req.getParameter("emailIncorrecto");
+			u = null;
+			m.setViewName("login");
+			
+		}else {
+
+			u.setEmail(email);
+			u.setPassword(password);
+			 Usuario aux = us.loginUsuario(u);
+			session.setAttribute("usuario", aux);
+			m.setViewName("index");
+		}
+
+		
+		return u;
 	}
 	
 	@RequestMapping("/categoriasAjax")
@@ -489,6 +508,23 @@ public class Controlador {
 		
 		return misRecetas(req);
 	}
+	
+	@RequestMapping("/filtroBusqueda") 
+	public String filtroBusqueda(HttpServletRequest req) { 
+		session = req.getSession(true); 
+		System.err.println("entra en filtroBusqueda"); 
+		String titulo = req.getParameter("titulo"); 
+		int categoria = Integer.parseInt(req.getParameter("idcategoria")); 
+		String ingrediente = req.getParameter("ingrediente"); 
+		 
+		List<Receta> aux = recetaService.filtrado(categoria, titulo, ingrediente); 
+		for (Receta receta : aux) { 
+			System.out.println(receta.getTitulo()); 
+		} 
+		session.setAttribute("listarRecetas", aux); 
+		 
+		return "recetas"; 
+	} 
 
 	
 	
