@@ -52,7 +52,7 @@
 					<hr class="my-4">
 					<c:forEach var="c" items="${recetaCompleta}">
 										<ul>
-											<h4><li id ="idingrediente" value="${c.tablaIngredientes}">${c.tablaIngredientes.nombre}</li></h4>
+											<h4><li id ="idingrediente" value="${c.tablaIngredientes}">${c.cantidad_ingrediente} ${c.tablaMedidas.nombre} ${c.tablaIngredientes.nombre}</li></h4>
 										</ul>
 
 									</c:forEach>

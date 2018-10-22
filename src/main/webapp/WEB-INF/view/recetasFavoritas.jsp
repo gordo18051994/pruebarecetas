@@ -26,7 +26,7 @@
 			
 			<% 
 			
-				if (session.getAttribute("misrecetas") == null) {
+				if (session.getAttribute("recetasFavoritas") == null) {
 					%>
 					<p><div style="align-content: center;"> <h2>No tienes ninguna receta marcada como favorita</h2>
 					<p><h4>Mira las recetas <a href="recetas">aquí</a> y pincha en el ❤ de las que más te gusten.</h4>

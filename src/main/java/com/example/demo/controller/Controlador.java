@@ -449,11 +449,16 @@ public class Controlador {
 		
 		Receta re = (Receta) session.getAttribute("receta");
 		List<IngredienteReceta> irs =  ingRecetaService.listarPorReceta(re.getId());
-		for (IngredienteReceta ir : irs) {
-			System.out.println(""+ir.getTablaIngredientes().getNombre());
-			ingRecetaService.borrarIngrediente(ir);
-			System.out.println("ingrediene "+ ir+ " borrado");
+		if(irs == null) {
+			System.out.println("no hay ingredientes");
+		} else {
+			for (IngredienteReceta ir : irs) {
+				System.out.println(""+ir.getTablaIngredientes().getNombre());
+				ingRecetaService.borrarIngrediente(ir);
+				System.out.println("ingrediene "+ ir+ " borrado");
+			}
 		}
+		
 		
 		
 		Usuario u = (Usuario) session.getAttribute("usuario");

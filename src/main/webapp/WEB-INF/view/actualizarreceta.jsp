@@ -22,7 +22,7 @@
 				</div>
 				<div class="form-group">
 					<label>Ponle el título:</label> <input type="text" name="titulo"
-						class="form-control" placeholder="${receta.titulo }" required>
+						class="form-control" value="${receta.titulo }"required>
 				</div>
 
 				<div class="form-group">
