@@ -58,7 +58,17 @@ var init = function() {
 		
 	})
 	
+		var ingredientes = [];
 	
+	$.post('/buscarIngrediente', function(data) {
+		for(i = 0; i < data.length; i++) {
+			debugger;
+			ingredientes.push(data[i].nombre);
+		}
+	})
+	$( "#tags" ).autocomplete({
+	      source: ingredientes
+	    });
 	
 		
 }

@@ -306,6 +306,10 @@ public class Controlador {
 	public String perfil(HttpServletRequest req) {
 		return "perfil";
 	}
+	@RequestMapping("/pruebaAñadir")
+	public String pruebaAñadir(HttpServletRequest req) {
+		return "pruebaAñadir";
+	}
 	
 	@RequestMapping("/añadirReceta")
 	public String añadirReceta(HttpServletRequest req) {
@@ -384,8 +388,8 @@ public class Controlador {
 	}
 	
 	@RequestMapping("buscarIngrediente")
-	public @ResponseBody List<Ingrediente> buscarIngrediente(@RequestParam("ingrediente") String nombre, HttpServletRequest req) {
-		List<Ingrediente> ingredientes = ingredienteService.filtrarIngredientes(nombre);
+	public @ResponseBody List<Ingrediente> buscarIngrediente(HttpServletRequest req) {
+		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
 		return ingredientes;
 	}
 	
@@ -512,12 +516,16 @@ public class Controlador {
 		String titulo = req.getParameter("titulo"); 
 		int categoria = Integer.parseInt(req.getParameter("idcategoria")); 
 		String ingrediente = req.getParameter("ingrediente"); 
-		 
+		System.out.println(ingrediente);
+		String mensaje = "";
 		List<Receta> aux = recetaService.filtrado(categoria, titulo, ingrediente); 
-		for (Receta receta : aux) { 
-			System.out.println(receta.getTitulo()); 
-		} 
-		session.setAttribute("listarRecetas", aux); 
+		if(aux == null) {
+			mensaje = "No hay resultados de esta búsaueda";
+			req.setAttribute("mensaje", mensaje);
+		} else {
+			session.setAttribute("listarRecetas", aux); 
+		}
+		
 		 
 		return "recetas"; 
 	} 

@@ -27,7 +27,7 @@
 									placeholder="Receta">
 							</div>
 							<div class="col-3">
-								<div class="scrollspy" data-spy="scroll" data-offset="0"
+								<%-- <div class="scrollspy" data-spy="scroll" data-offset="0"
 									style="background: #ffffff; height: 50px; overflow-y: scroll;">
 									<c:forEach var="i" items="${listarIngredientes }">
 										<ul class="list-group">
@@ -37,6 +37,10 @@
 											</li>
 										</ul>
 									</c:forEach>
+								</div> --%>
+
+								<div class="ui-widget">
+									 <input id="tags" class="form-control" name="ingrediente" placeholder="ingredientes">
 								</div>
 							</div>
 							<div class="col-3">
@@ -46,8 +50,9 @@
 					</form>
 
 				</div>
-				
+
 				<div class="row" style="margin-top: 5%;">
+				
 					<c:forEach var="r" items="${listarRecetas}">
 
 						<div class="col-md-4" style="height: 100%;">
@@ -85,16 +90,17 @@
 									<a class="" style="margin-right: 10%;"
 										href="/receta?id_receta=${r.id}"><button type="button"
 											class="btn btn-warning btn-lg">RECETA COMPLETA</button></a> <a
-										class="" href="mailto:?Subject=${r.titulo}%20en%20La%20Receta%20de%20la%20Abuela&amp;body=Mira%20que%20receta%20mas%20chula%20que%20he%20encontrado%20en%20esta%20magnífica%20web%20que%20han%20creado%203%20chavales.""><button type="button"
-											class="btn btn-warning btn-lg">✉</button></a>
+										class=""
+										href="mailto:?Subject=${r.titulo}%20en%20La%20Receta%20de%20la%20Abuela&amp;body=Mira%20que%20receta%20mas%20chula%20que%20he%20encontrado%20en%20esta%20magnífica%20web%20que%20han%20creado%203%20chavales.""><button
+											type="button" class="btn btn-warning btn-lg">✉</button></a>
 								</div>
 
 							</div>
 						</div>
 					</c:forEach>
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 	</div>
