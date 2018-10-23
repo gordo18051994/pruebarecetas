@@ -113,31 +113,32 @@ public class Controlador {
 		return u;
 	}
 	@RequestMapping("/logear")
-	public @ResponseBody Usuario login(HttpServletRequest req) {
+	public  ModelAndView login(HttpServletRequest req) {
 		session = req.getSession(true);
 		ModelAndView m = new ModelAndView();
 
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		Usuario u = new Usuario();
+		String msg="";
+		u.setEmail(email);
+		u.setPassword(password);
+		 Usuario aux = us.loginUsuario(u);
+		 if (aux==null) {
+				System.out.println("Credenciales incorrectas");
+				req.getParameter("emailIncorrecto");
+				u = null;
+				m.setViewName("login");
+				msg ="Credenciales incorrectas.";
+				m.addObject("msg", msg);
+		 }else  {
+				
+				session.setAttribute("usuario", aux);
+				m.setViewName("index");
+				
+			}
 		
-		if(us.buscarUsuario(email)==null) {
-			System.out.println("No existe esta cuenta de usuario");
-			req.getParameter("emailIncorrecto");
-			u = null;
-			m.setViewName("login");
-			
-		}else {
-
-			u.setEmail(email);
-			u.setPassword(password);
-			 Usuario aux = us.loginUsuario(u);
-			session.setAttribute("usuario", aux);
-			m.setViewName("index");
-		}
-
-		
-		return u;
+		return m;
 	}
 	
 	@RequestMapping("/categoriasAjax")
@@ -174,8 +175,10 @@ public class Controlador {
 		session = req.getSession(true);
 		int id_categoria = Integer.parseInt(req.getParameter("id_categoria"));
 		System.out.println("entra en recetasCategoria");
-
-
+		
+		List<Ingrediente> ingredientes = ingredienteService.listarIngredientes();
+		req.setAttribute("listarIngredientes", ingredientes);
+		
 		List<Receta> listaRecetas = recetaService.listarPorCategoria(id_categoria); 
 		session.setAttribute("listarRecetas", listaRecetas);
 

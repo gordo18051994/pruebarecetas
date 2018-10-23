@@ -38,25 +38,8 @@ var init = function() {
 		$("#google").removeClass("mdi-spin");
 	})
 	
-	$("#emailIncorrecto").hide(); 
-	$("#btnLogin").on('click', function(){
-		var email=$("#emailLogin").val();
-		var password=$("#inputPassword").val();
-		$.post('/logear',{"email": email, "password": password}, function (data) {
-			debugger;
-			if (data.email==undefined){
-				debugger;
-				$("#emailIncorrecto").show();
-			}else{
-				debugger;
-				location.href ="/";
-			}
-			
-			 
-			
-		})
-		
-	})
+
+	
 	
 		var ingredientes = [];
 	

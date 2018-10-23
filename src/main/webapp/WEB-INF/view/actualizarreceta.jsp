@@ -48,7 +48,7 @@
 								 <label>Tipo:</label>
 								  <select type="form-control" name="idMedida" required>
 									<c:forEach var="m" items="${listarMedidas }">
-										<option name="idmedida" value="${m.id}">${m.nombre }</option>
+										<option name="idmedida" value="${m.id}" required>${m.nombre }</option>
 									</c:forEach>
 							</select>
 							</div>

@@ -21,7 +21,7 @@ public class UsuarioSERVICE implements IUsuarioService {
 		Usuario aux = new Usuario();
 		List<Usuario> usuarios = (List<Usuario>)usuarioRepository.findAll();
 		for (Usuario usuario : usuarios) {
-			if(usuario.getEmail().equals(u.getEmail())) {
+			if(usuario.getEmail().equals(u.getEmail())&&usuario.getPassword().equals(u.getPassword())) {
 				aux = usuario;
 				break;
 			} else {

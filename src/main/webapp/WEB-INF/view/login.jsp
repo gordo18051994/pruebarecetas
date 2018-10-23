@@ -24,11 +24,15 @@
               <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
                 <label for="inputPassword">Contraseña</label>
-               <div id="emailIncorrecto"  class="alert alert-danger" style="margin-top: 5%;">Credenciales incorrectas.</div>
-                
+                <%String msg = (String) request.getAttribute("msg");
+                if (msg != null){%>
+                	 <div id="emailIncorrecto"  class="alert alert-danger" style="margin-top: 5%;"><%=msg %></div>
+                <% }%>
+              
+               <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btnLogin" type="submit">Entrar</button>
               </div>
             </form>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btnLogin" type="">Entrar</button>
+
             <a class="btn btn-lg btn-primary btn-block text-uppercase"  href="/registro" type="button">Registrarse</a>
               <hr class="my-4">
           </div>
